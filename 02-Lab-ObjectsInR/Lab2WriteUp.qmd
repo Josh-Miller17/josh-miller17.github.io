@@ -4,6 +4,7 @@ title: Lab Two -- Basic Tasks in R # Title of the document
 # Bibliography Details
 bibliography: Lab2References.bib  # Name of bib file in the same folder 
 bibliographystyle: apa                   # Bibliography style
+cite-method: citeproc
 
 execute:
   warning: false
