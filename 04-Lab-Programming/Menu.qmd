@@ -1,0 +1,222 @@
+---
+execute:               # Default settings for code blocks
+  warning: false       # Do not print warnings
+  message: false       # Do not print messages
+  size: "scriptsize"   # Set code size to script size
+
+format:
+  pdf:        # Specify .pdf formatting options 
+    documentclass: article     # Document Class
+    number-sections: true      # Number Sections
+    reference-section-title: "References" # Title for reference section
+    code-line-numbers: true    # Line numbers printed in code
+    cap-location: top          # Captions at the top of tables 
+    geometry:
+      - top=0.75in
+      - left=0.75in
+      - bottom=0.75in
+      - right=0.75in
+format-links: [pdf]
+---
+```{r}
+#| echo: false
+
+default_chunk_hook  <- knitr::knit_hooks$get("chunk")
+
+latex_font_size <- c("Huge", "huge", "LARGE", "Large", 
+                     "large", "normalsize", "small", 
+                     "footnotesize", "scriptsize", "tiny")
+
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- default_chunk_hook(x, options)
+  if(options$size %in% latex_font_size) {
+    paste0("\n \\", options$size, "\n\n", 
+      x, 
+      "\n\n \\normalsize"
+    )
+  } else {
+    x
+  }
+})
+
+```
+
+```{r}
+#| label: load-packages
+#| include: false
+library(tidyverse)
+```
+
+<!-- Code For Building Menu Here -->
+```{r}
+#| include: false
+breakfasts <- c("website/BerryMelonSmoothie.html",
+                "website/BiscuitsAndGravy.html",
+                "website/BreakfastCheesecake.html",
+                "website/BreakfastMuffins.html",
+                "website/ChiaParfait.html",
+                "website/GardenTomatoQuiche.html",
+                "website/OvernightOats.html",
+                "website/PumpkinToast.html",
+                "website/TropicalSmoothie.html")
+dinner <- c("website/AfricanPeanutSoup.html",
+            "website/Alfredo.html",
+            "website/ArugulaPasta.html",
+            "website/AutumnGrainBowl.html",
+            "website/BakedZiti.html",
+            "website/BBQChili.html",
+            "website/Bibimbap.html",
+            "website/BLTSalad.html",
+            "website/Burgers.html",
+            "website/CapreseSandwiches.html",
+            "website/EggplantParmesan.html",
+            "website/Enchiladas.html",
+            "website/FloridaRolls.html",
+            "website/KimchiGrilledCheese.html",
+            "website/Lasagna.html",
+            "website/LatinBowl.html",
+            "website/Meatloaf.html",
+            "website/PadThai.html",
+            "website/PastaAndPeas.html",
+            "website/Pizza.html",
+            "website/RedWineRagu.html",
+            "website/SalmonChowder.html",
+            "website/Shakshuka.html")
+
+```
+
+```{r}
+#| size: "scriptsize"
+#| include: false
+# Created function to randomly select 3 dinner recepies and 1 breakfast recepie.
+
+chosen.breakfast <- sample(breakfasts, 1) # chose random breakfast from vector
+chosen.dinners   <- sample(dinner, 3) # chose 3 random dinners from vector
+
+chosen.vector <- c(chosen.breakfast, chosen.dinners) #created vector with all chosen breakfasts and dinners.
+```
+
+```{r}
+#| size: "scriptsize"
+#| include: false
+library("rvest") # loaded the library "rvest"
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+all.ingredients <- c() # create an empty vector for the ingredients list for later
+
+all.ing <- list() # created an empty list of ingredients for each recepie to be printed later
+all.ins <- list() # created an empty list of instructions for each recepie to be printed later
+images <- c() # created empty vector of images for each recepie to be printed later
+
+for (i in 1:length(chosen.vector)){
+  html <- read_html(chosen.vector[i])
+  title <- html_element(html, "h1") |> html_text()
+
+  ingredients.section <- html_element(html, "#ingredients") # created object called ingredients.section which pulled the html of the ingredients section
+  ingredients <- html_elements(ingredients.section, "li") # created object called ingredients which pulled the items of the ingredients section
+  ingredients.text <- html_text(ingredients) # printed text of the ingredients (check line 317 of lab4WriteUp)
+  all.ingredients <- c(all.ingredients, ingredients.text) # appended empty vector of all ingredients to be printed in ingredients section
+  all.ing[[i]] <- ingredients.text
+
+  instructions.section <- html_element(html, "#instructions") # created object called instructions.section which pulled the html of the instructions section
+  instructions <- html_elements(instructions.section, "li") # created object called instructions which pulled the items of the instructions section
+  instructions.text <- html_text(instructions) # printed text of the instructions (check line 317 of lab4WriteUp)
+  all.ins[[i]] <- instructions.text
+
+  image.element <- html_element(html, ".quarto-figure") # created object called image.element which pulled the html of the image
+  image <- html_element(image.element, "img") # got the image tag using the image type and the object
+  sourcelink <- html_attr(image, "src") # pulled the source link for the image and saved it as an object
+  images[i] <- paste("website/", sourcelink, sep = "")
+ # created the full link as an object using the paste function
+}
+```
+
+# Ingredients
+
+```{r}
+#| echo: false
+#| results: 'asis'
+
+unique.ingredients <- unique(all.ingredients) # creates a vector using all.ingredients, but only uses unique ingredients
+
+for(item in unique.ingredients){
+  cat("- ", item, "\n") # prints unique items vector in a list form.
+}
+```
+
+\newpage
+
+# Recipe One
+
+```{r}
+#| echo: false
+#| results: 'asis'
+
+cat(paste("![", title, "](", images[1], "){width=50%}\n\n", sep = ""))
+ # print image for recepie 1
+
+  cat("\n\n## Instructions\n\n") # added subheader
+  cat(paste("-", all.ing[[1]], "\n")) # print ingredients list for recepie 1
+
+  cat("\n\n## Instructions\n\n") # added subheader
+  cat(paste("1.", all.ins[[1]], "\n")) # print ingredients list for recepie 1
+```
+
+\newpage
+
+# Recipe Two
+
+```{r}
+#| echo: false
+#| results: 'asis'
+
+cat(paste("![", title, "](", images[2], "){width=50%}\n\n", sep = ""))
+ # print image for recepie 2
+
+  cat("\n\n## Instructions\n\n") # added subheader
+  cat(paste("-", all.ing[[2]], "\n")) # print ingredients list for recepie 2
+
+  cat("\n\n## Instructions\n\n") # added subheader
+  cat(paste("1.", all.ins[[2]], "\n")) # print ingredients list for recepie 2
+```
+
+\newpage
+
+# Recipe Three
+
+```{r}
+#| echo: false
+#| results: 'asis'
+
+cat(paste("![", title, "](", images[3], "){width=50%}\n\n", sep = ""))
+ # print image for recepie 3
+
+  cat("\n\n## Instructions\n\n") # added subheader
+  cat(paste("-", all.ing[[3]], "\n")) # print ingredients list for recepie 3
+
+  cat("\n\n## Instructions\n\n") # added subheader
+  cat(paste("1.", all.ins[[3]], "\n")) # print ingredients list for recepie 3
+```
+
+\newpage
+
+# Breakfast Recipe
+
+```{r}
+#| echo: false
+#| results: 'asis'
+
+
+cat(paste("![", title, "](", images[4], "){width=50%}\n\n", sep = ""))
+ # print image for recepie 4
+
+  cat("\n\n## Instructions\n\n") # added subheader
+  cat(paste("-", all.ing[[4]], "\n")) # print ingredients list for recepie 4
+
+  cat("\n\n## Instructions\n\n") # added subheader
+  cat(paste("1.", all.ins[[4]], "\n")) # print ingredients list for recepie 4
+```
+
