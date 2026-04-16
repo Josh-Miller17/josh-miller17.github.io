@@ -308,7 +308,7 @@ ggplot() +
   xlim(-10, 10) +
   ylim(0, 20) +
   labs(x = "x", y = "y")
-(A.determinant <- det(A)) # found determinant of A
+(T.determinant <- det(T)) # found determinant of T
 ```
 
 The shape is slightly thinner and longer as compared to the shape in question 1. The area stays the exact same as in question 1.
@@ -339,9 +339,9 @@ ggplot() +
   xlim(-10, 10) +
   ylim(0, 20) +
   labs(x = "x", y = "y")
-(A.determinant <- det(A)) # found determinant of A
+(T.determinant <- det(T)) # found determinant of T
 ```
-The shape is slightly thinner and longer as compared to the shape in question 1 and 3.1, however it is now more of a rhombus shape. The area stays the exact same as in in all previous questions.
+The shape is slightly thinner and longer as compared to the shape in question 1 and 3.1, however it is now more of a rhombus shape. The area is smaller than it is in in all previous questions.
 
 ## Part c
 Can we shear vertically and horizontally at the same time? Use the following to generate a new shape. Compare the shape and its area to your answers in parts (a) and (b).
@@ -395,7 +395,8 @@ Create a data frame `ladder` with the following data. Note your data frame shoul
 Solution:
 ```{r}
 (ladder <- data.frame(x = c(0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1),
-y = c(0, 20, 0, 20, 2, 2, 4, 4, 6, 6, 8, 8, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18), group = c(1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11))) # Created ladder
+y = c(0, 20, 0, 20, 2, 2, 4, 4, 6, 6, 8, 8, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18), 
+group = c(1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11))) # Created ladder
 ```
 
 ## Part b
@@ -436,7 +437,7 @@ and use $k=0.5.$
 Solution: 
 ```{r}
 #| size: "scriptsize"
-(A <- matrix(data = c(0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 20, 0, 20, 2, 2, 4, 4, 6, 6, 8, 8, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18), nrow = 22, ncol = 2)) # Created matrix A
+(A <- as.matrix(cbind(ladder$x, ladder$y))) # Created matrix A
 (M <- matrix(data = c(1, 0.5, 0, 1), nrow = 2, ncol = 2)) # Created matrix M
 (T.matrix <- A %*% M)
 ```
@@ -447,7 +448,12 @@ Create a data frame `leaning.ladder` with the `x` and `y` equal to the first and
 Solution:
 ```{r}
 #| size: "scriptsize"
-(leaning.ladder <- data.frame(x = T.matrix[, 1], y = T.matrix[, 2], group = c(1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11))) # Created leaning.ladder dataframe
+(leaning.ladder <- data.frame(x = T.matrix[, 1], 
+                              y = T.matrix[, 2], 
+                              group = c(1, 1, 2, 2, 3,
+                              3, 4, 4, 5, 5, 6, 6, 7,
+                              7, 8, 8, 9, 9, 10, 10, 11, 11))) 
+# Created leaning.ladder dataframe
 ```
 
 ## Part e
