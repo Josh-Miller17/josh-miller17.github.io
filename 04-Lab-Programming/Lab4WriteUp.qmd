@@ -231,7 +231,7 @@ Load the html of the `website/KimchiGrilledCheese.html` using the `read_html()` 
 Solution:
 ```{r}
 #| size: "scriptsize"
-html <- read_html("KimchiGrilledCheese.html") # loaded the html and saved it as an object called html
+html <- read_html("website/KimchiGrilledCheese.html") # loaded the html and saved it as an object called html
 ```
 
 ## Part c
