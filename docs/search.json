@@ -774,7 +774,7 @@
     "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-a",
     "title": "Lab Two – Basic Tasks in R",
     "section": "1.1 Part a",
-    "text": "1.1 Part a\nInstall the esquisse package for R. Report the code below, ensuring to set the eval option to false, using “#| eval: false”, so that we don’t install the package every time you compile your Quarto document.\nSolution:\n\n\n\nCode\ninstall.packages(\"esquisse\")",
+    "text": "1.1 Part a\nInstall the esquisse package for R. Report the code below, ensuring to set the eval option to false, using “#| eval: false”, so that we don’t install the package every time you compile your Quarto document.\nSolution:\n\n\n\nCode\ninstall.packages(\"esquisse\")\n\n\n\nI used the install packages function to install the esquisse package as seen above.",
     "crumbs": [
       "Lab Two -- Basic Tasks in R"
     ]
@@ -804,7 +804,7 @@
     "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-d",
     "title": "Lab Two – Basic Tasks in R",
     "section": "1.4 Part d",
-    "text": "1.4 Part d\nIs a demo or vignette available for the esquisse package for R? Report the code below, ensuring to set the eval option to false, using “#| eval: false”, so that the you don’t get errors when you compile your Quarto document.\nSolution:\n\n\n\nCode\ndemo(\"esquisse\")\nvignette(\"esquisse\")\n\n\n neither the demo or the vignette were available",
+    "text": "1.4 Part d\nIs a demo or vignette available for the esquisse package for R? Report the code below, ensuring to set the eval option to false, using “#| eval: false”, so that the you don’t get errors when you compile your Quarto document.\nSolution:\n\n\n\nCode\ndemo(\"esquisse\")\nvignette(\"esquisse\")\n\n\n\nThe demo was not available, however there were two vignettes that were available",
     "crumbs": [
       "Lab Two -- Basic Tasks in R"
     ]
@@ -824,7 +824,7 @@
     "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-f",
     "title": "Lab Two – Basic Tasks in R",
     "section": "1.6 Part f",
-    "text": "1.6 Part f\nRun esquisser() in your console – not in a chunk of R code in your Quarto document.\n\nSelect palmerpenguins from the “Select an environment in which to search:” dropdown. This should automatically select penguins in the “Select a data.frame:” dropdown. Click “Import Data”.\nDrag body_mass_g to the X box and species to the fill box.\nDescribe what you see in words. What can you conclude about Adelie, Chinstrap, and Gentoo penguins based on the resulting plot?\n\nSolution: I can see a bar chart with the x axis representing body mass in grams, ranging from 2500 to 6000. The y axis is the count, or number, of pengins at each mass. The data is colored in red, green and blue with the Adelie, Chinstrap, and Gentoo penguins each representing their respective colors. From the plot, the Adelie penguins are the lightest penguins and have the highest number of observations. The Adelie penguin seems to typically. be between 3000 and 4000 grams. the Chinstrap penguins are more spread out, but seem to be the second lightest penguin species. The Gentoo penguins also have a wide spread, but seem to be the heaviest penguins mostly ranging from 4500 to 5500 grams.",
+    "text": "1.6 Part f\nRun esquisser() in your console – not in a chunk of R code in your Quarto document.\n\nSelect palmerpenguins from the “Select an environment in which to search:” dropdown. This should automatically select penguins in the “Select a data.frame:” dropdown. Click “Import Data”.\nDrag body_mass_g to the X box and species to the fill box.\nDescribe what you see in words. What can you conclude about Adelie, Chinstrap, and Gentoo penguins based on the resulting plot?\n\nSolution: I can see a histogram with the x axis representing body mass in grams, ranging from 2500 to 6000. The y axis is the count, or number, of pengins at each mass. The data is colored in red, green and blue with the Adelie, Chinstrap, and Gentoo penguins each representing their respective colors. From the plot, the Adelie penguins are the lightest penguins and have the highest number of observations. The Adelie penguin seems to typically. be between 3000 and 4000 grams. the Chinstrap penguins are more spread out, but seem to be the second lightest penguin species. The Gentoo penguins also have a wide spread, but seem to be the heaviest penguins mostly ranging from 4500 to 5500 grams.",
     "crumbs": [
       "Lab Two -- Basic Tasks in R"
     ]
@@ -834,7 +834,7 @@
     "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-a-1",
     "title": "Lab Two – Basic Tasks in R",
     "section": "2.1 Part a",
-    "text": "2.1 Part a\nThe Fibonacci Sequence is a recursive formula: \\[F_n = F_{n-1} + F_{n-2}\\] where \\(F_0=0\\) and \\(F_1=1\\).\nCreate a vector of the first 10 Fibonacci numbers.\nSolution: (fibonacci &lt;- c(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)) # created fib vector for part 2.a",
+    "text": "2.1 Part a\nThe Fibonacci Sequence is a recursive formula: \\[F_n = F_{n-1} + F_{n-2}\\] where \\(F_0=0\\) and \\(F_1=1\\).\nCreate a vector of the first 10 Fibonacci numbers.\nSolution:\n\n\n\nCode\n(fibonacci &lt;- c(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)) # created fib vector for part 2.a\n\n\n [1]  0  1  1  2  3  5  8 13 21 34",
     "crumbs": [
       "Lab Two -- Basic Tasks in R"
     ]
@@ -844,7 +844,7 @@
     "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-b-1",
     "title": "Lab Two – Basic Tasks in R",
     "section": "2.2 Part b",
-    "text": "2.2 Part b\nTriangular Numbers are the cumulative sums of natural numbers: \\[F_n = \\frac{n(n+1)}{2}.\\]\nCreate a vector of the first 10 Triangular Numbers.\nSolution: (n &lt;- seq(from = 1, to = 10, by = 1)) # created the vector for the n to be used in the final vector\n(tri.vector &lt;- n*(n+1)/2) # created the triangular numbers vector",
+    "text": "2.2 Part b\nTriangular Numbers are the cumulative sums of natural numbers: \\[F_n = \\frac{n(n+1)}{2}.\\]\nCreate a vector of the first 10 Triangular Numbers.\nSolution:\n\n\n\nCode\n(n &lt;- seq(from = 1, to = 10, by = 1)) # created the vector for the n to be used in the final vector\n\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\n\nCode\n(tri.vector &lt;- n*(n+1)/2) # created the triangular numbers vector\n\n\n [1]  1  3  6 10 15 21 28 36 45 55",
     "crumbs": [
       "Lab Two -- Basic Tasks in R"
     ]

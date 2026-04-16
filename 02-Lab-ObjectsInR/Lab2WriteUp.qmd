@@ -86,6 +86,8 @@ Solution:
 install.packages("esquisse")
 ```
 
+I used the install packages function to install the esquisse package as seen above.
+
 ## Part b
 Load the `esquisse` package for `R`. Report the code below. It does not matter whether you set "\#| eval: false" because loading the package does not add a lot of time. Note you will not evaluate any code that uses the `esquisse` package, so there is no need to load it as you compile your Quarto document.
 
@@ -118,7 +120,8 @@ Solution:
 demo("esquisse")
 vignette("esquisse")
 ```
-neither the demo or the vignette were available
+
+The demo was not available, however there were two vignettes that were available
 
 ## Part e
 Add the BibTeX citation for `esquisse` package for `R` to your `.bib` file and cite it in a sentence describing what the package does below. Note you can reference a citation named `esquisse` using "[@\hspace{-0em}esquisse]".
@@ -136,7 +139,7 @@ ii. Drag `body_mass_g` to the X box and `species` to the fill box.
 iii. Describe what you see in words. What can you conclude about Adelie, Chinstrap, and Gentoo penguins based on the resulting plot? 
 
 
-Solution: I can see a bar chart with the x axis representing body mass in grams, ranging from 2500 to 6000. The y axis is the count, or number, of pengins at each mass. The data is colored in red, green and blue with the Adelie, Chinstrap, and Gentoo penguins each representing their respective colors. From the plot, the Adelie penguins are the lightest penguins and have the highest number of observations. The Adelie penguin seems to typically. be between 3000 and 4000 grams. the Chinstrap penguins are more spread out, but seem to be the second lightest penguin species. The Gentoo penguins also have a wide spread, but seem to be the heaviest penguins mostly ranging from 4500 to 5500 grams.
+Solution: I can see a histogram with the x axis representing body mass in grams, ranging from 2500 to 6000. The y axis is the count, or number, of pengins at each mass. The data is colored in red, green and blue with the Adelie, Chinstrap, and Gentoo penguins each representing their respective colors. From the plot, the Adelie penguins are the lightest penguins and have the highest number of observations. The Adelie penguin seems to typically. be between 3000 and 4000 grams. the Chinstrap penguins are more spread out, but seem to be the second lightest penguin species. The Gentoo penguins also have a wide spread, but seem to be the heaviest penguins mostly ranging from 4500 to 5500 grams.
  
 
 # Objects and Vectors
@@ -183,7 +186,11 @@ There are some vectors for which we can't use a `seq()` or `rep()`. For example,
 #| code-fold: FALSE
 primes <- c(2, 3, 5, 7)
 ```
+
+I could not use seq() because the values were not sequential (not jumping by a fixed amount (1, 2, 2, etc.)), and I couldn't use rep() because the values weren't repeating.
+
 **Note**: There is a `primes` package for `R` [@primes] that contains a `generate_primes(min, max)` function for generating a vector of primes from `min` to `max`.
+
 
 
 ## Part a
@@ -194,7 +201,10 @@ where $F_0=0$ and $F_1=1$.
 Create a vector of the first 10 Fibonacci numbers.
 
 Solution: 
+```{r}
+#| size: "scriptsize"
 (fibonacci <- c(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)) # created fib vector for part 2.a
+```
 
 ## Part b
 Triangular Numbers are the cumulative sums of natural numbers:
@@ -203,9 +213,12 @@ $$F_n = \frac{n(n+1)}{2}.$$
 Create a vector of the first 10 Triangular Numbers. 
 
 Solution:
+```{r}
+#| size: "scriptsize"
 (n <- seq(from = 1, to = 10, by = 1)) # created the vector for the n to be used in the final vector
 
 (tri.vector <- n*(n+1)/2) # created the triangular numbers vector
+```
 
 ## Part c
 Suppose I were designing a repeated meausres experiment with three treatment conditions. Each of $n=10$ participants (with `ID` 1 to 10) will receive *all* experimental conditions, call them "Control", "Treatment A", and "Treatment B". 

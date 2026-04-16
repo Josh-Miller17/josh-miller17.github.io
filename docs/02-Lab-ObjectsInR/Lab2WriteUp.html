@@ -307,6 +307,7 @@ window.Quarto = {
 </details>
 </div>
 <p></p>
+<p>I used the install packages function to install the esquisse package as seen above.</p>
 </section>
 <section id="part-b" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="part-b"><span class="header-section-number">1.2</span> Part b</h2>
@@ -346,7 +347,8 @@ window.Quarto = {
 <span id="cb4-2"><a href="#cb4-2"></a><span class="fu">vignette</span>(<span class="st">"esquisse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p> neither the demo or the vignette were available</p>
+<p></p>
+<p>The demo was not available, however there were two vignettes that were available</p>
 </section>
 <section id="part-e" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="part-e"><span class="header-section-number">1.5</span> Part e</h2>
@@ -362,7 +364,7 @@ the command instead of actually citing. --></p>
 <li>Drag <code>body_mass_g</code> to the X box and <code>species</code> to the fill box.</li>
 <li>Describe what you see in words. What can you conclude about Adelie, Chinstrap, and Gentoo penguins based on the resulting plot?</li>
 </ol>
-<p>Solution: I can see a bar chart with the x axis representing body mass in grams, ranging from 2500 to 6000. The y axis is the count, or number, of pengins at each mass. The data is colored in red, green and blue with the Adelie, Chinstrap, and Gentoo penguins each representing their respective colors. From the plot, the Adelie penguins are the lightest penguins and have the highest number of observations. The Adelie penguin seems to typically. be between 3000 and 4000 grams. the Chinstrap penguins are more spread out, but seem to be the second lightest penguin species. The Gentoo penguins also have a wide spread, but seem to be the heaviest penguins mostly ranging from 4500 to 5500 grams.</p>
+<p>Solution: I can see a histogram with the x axis representing body mass in grams, ranging from 2500 to 6000. The y axis is the count, or number, of pengins at each mass. The data is colored in red, green and blue with the Adelie, Chinstrap, and Gentoo penguins each representing their respective colors. From the plot, the Adelie penguins are the lightest penguins and have the highest number of observations. The Adelie penguin seems to typically. be between 3000 and 4000 grams. the Chinstrap penguins are more spread out, but seem to be the second lightest penguin species. The Gentoo penguins also have a wide spread, but seem to be the heaviest penguins mostly ranging from 4500 to 5500 grams.</p>
 </section>
 </section>
 <section id="objects-and-vectors" class="level1" data-number="2">
@@ -425,19 +427,49 @@ the command instead of actually citing. --></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>primes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p> <strong>Note</strong>: There is a <code>primes</code> package for <code>R</code> <span class="citation" data-cites="primes">(<a href="#ref-primes" role="doc-biblioref">Keyes and Egeler 2025</a>)</span> that contains a <code>generate_primes(min, max)</code> function for generating a vector of primes from <code>min</code> to <code>max</code>.</p>
+<p></p>
+<p>I could not use seq() because the values were not sequential (not jumping by a fixed amount (1, 2, 2, etc.)), and I couldn’t use rep() because the values weren’t repeating.</p>
+<p><strong>Note</strong>: There is a <code>primes</code> package for <code>R</code> <span class="citation" data-cites="primes">(<a href="#ref-primes" role="doc-biblioref">Keyes and Egeler 2025</a>)</span> that contains a <code>generate_primes(min, max)</code> function for generating a vector of primes from <code>min</code> to <code>max</code>.</p>
 <section id="part-a-1" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="part-a-1"><span class="header-section-number">2.1</span> Part a</h2>
 <p>The Fibonacci Sequence is a recursive formula: <span class="math display">\[F_n = F_{n-1} + F_{n-2}\]</span> where <span class="math inline">\(F_0=0\)</span> and <span class="math inline">\(F_1=1\)</span>.</p>
 <p>Create a vector of the first 10 Fibonacci numbers.</p>
-<p>Solution: (fibonacci &lt;- c(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)) # created fib vector for part 2.a</p>
+<p>Solution:</p>
+<p></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>(fibonacci <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">21</span>, <span class="dv">34</span>)) <span class="co"># created fib vector for part 2.a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  0  1  1  2  3  5  8 13 21 34</code></pre>
+</div>
+</div>
+<p></p>
 </section>
 <section id="part-b-1" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="part-b-1"><span class="header-section-number">2.2</span> Part b</h2>
 <p>Triangular Numbers are the cumulative sums of natural numbers: <span class="math display">\[F_n = \frac{n(n+1)}{2}.\]</span></p>
 <p>Create a vector of the first 10 Triangular Numbers.</p>
-<p>Solution: (n &lt;- seq(from = 1, to = 10, by = 1)) # created the vector for the n to be used in the final vector</p>
-<p>(tri.vector &lt;- n*(n+1)/2) # created the triangular numbers vector</p>
+<p>Solution:</p>
+<p></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>(n <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>)) <span class="co"># created the vector for the n to be used in the final vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>(tri.vector <span class="ot">&lt;-</span> n<span class="sc">*</span>(n<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span>) <span class="co"># created the triangular numbers vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1  3  6 10 15 21 28 36 45 55</code></pre>
+</div>
+</div>
+<p></p>
 </section>
 <section id="part-c-1" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="part-c-1"><span class="header-section-number">2.3</span> Part c</h2>
@@ -452,14 +484,14 @@ the command instead of actually citing. --></p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>(id <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)) <span class="co"># create ID object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>(id <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)) <span class="co"># create ID object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>(id.vector <span class="ot">&lt;-</span> <span class="fu">rep</span>(id, <span class="at">each =</span> <span class="dv">3</span>)) <span class="co"># create ID vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>(id.vector <span class="ot">&lt;-</span> <span class="fu">rep</span>(id, <span class="at">each =</span> <span class="dv">3</span>)) <span class="co"># create ID vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  1  1  2  2  2  3  3  3  4  4  4  5  5  5  6  6  6  7  7  7  8  8  8  9
@@ -467,14 +499,14 @@ the command instead of actually citing. --></p>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>(treatments <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Control"</span>, <span class="st">"Treatment A"</span>, <span class="st">"Treatment B"</span>)) <span class="co"># manually create treatements object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>(treatments <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Control"</span>, <span class="st">"Treatment A"</span>, <span class="st">"Treatment B"</span>)) <span class="co"># manually create treatements object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Control"     "Treatment A" "Treatment B"</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>(treatments.vector <span class="ot">&lt;-</span> <span class="fu">rep</span>(treatments, <span class="at">times =</span> <span class="dv">10</span>)) <span class="co"># create treatments vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>(treatments.vector <span class="ot">&lt;-</span> <span class="fu">rep</span>(treatments, <span class="at">times =</span> <span class="dv">10</span>)) <span class="co"># create treatments vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Control"     "Treatment A" "Treatment B" "Control"     "Treatment A"
