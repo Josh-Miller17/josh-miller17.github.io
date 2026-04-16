@@ -129,7 +129,7 @@ Add the BibTeX citation for `esquisse` package for `R` to your `.bib` file and c
 the command instead of actually citing. -->
 
 
-Solution: the package @\hspace{-0em}esquisse explores and visualizes data interactively
+Solution: the package [@esquisse] explores and visualizes data interactively
 
 ## Part f
 Run `esquisser()` in your console -- not in a chunk of `R` code in your Quarto document. 
