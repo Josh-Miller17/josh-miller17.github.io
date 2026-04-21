@@ -164,12 +164,12 @@ Solution:
 ```{r}
 #| size: scriptsize
 dat.kitsberg.cleaned <- mutate(dat.kitsberg.cleaned, 
-                        SampleType = if_else(SampleType == "primary",
-                        "Healthy Donor", "THP-1"), 
-                        CellType = if_else(CellType == "mono",
-                        "Monocytes", "Macrophages"),
-                        Treatment = if_else(Treatment == "12hpi",
-                        "12 Hours Post-Infection", "Uninfected"))
+                               SampleType = if_else(SampleType == "primary",
+                               "Healthy Donor", "THP-1"), 
+                               CellType = if_else(CellType == "mono",
+                               "Monocytes", "Macrophages"),
+                               Treatment = if_else(Treatment == "12hpi",
+                               "12 Hours Post-Infection", "Uninfected"))
 # mutated the columns of Sample Type, Cell Type, and Treatment to have neater names
 ```
 
@@ -211,17 +211,20 @@ Recreate Figure 3b as depicted in the paper (see [https://www.nature.com/article
 Solution:
 ```{r}
 #| size: scriptsize
-ggplot(dat.kitsberg.cleaned) +
-  geom_violin(aes(x = CellType,            # created violin plot 
-                  y = viruses_within_nucleus),
-              fill = "lightgrey", alpha=0.5) +
-  geom_boxplot(aes(x = CellType,               # created box plot
-                  y = viruses_within_nucleus),
-              width = 0.1) +
-  theme_bw() +                               # cleaner Theme   
-  labs(x = "CellType",                       # created labels
-       y = "Viruses Within Nucleus") +
-  ggtitle("Viruses in the Nucleus by Cell Type") # created title
+ggplot(dat.kitsberg.cleaned,
+       aes(x = SampleType,
+           y = viruses_within_nucleus,
+           fill = CellType)) +
+  # created violin plot
+  geom_violin(alpha=0.5, position = position_dodge(width = 0.8)) +
+  # created boxplot
+  geom_boxplot(width = 0.1, position = position_dodge(width = 0.8)) +
+  theme_bw() +                                
+  labs(x = "Sample Type",                       # created labels
+       y = "Viruses Within Nucleus",
+       fill = "Cell Type",
+       title = "Viruses in the Nucleus by Sample Type and Cell Type"
+  )
 ```
 
 ### Part B
@@ -243,7 +246,9 @@ fig3b_table <- dat.kitsberg.cleaned |>
             IQR = IQR(viruses_within_nucleus),
             sd = sd(viruses_within_nucleus),
             skew = e1071::skewness(viruses_within_nucleus),
-            "excess kurtosis" = e1071::kurtosis(viruses_within_nucleus)) 
+            "excess kurtosis" = e1071::kurtosis(viruses_within_nucleus)
+  ) |> ungroup()
+
 ```
 
 ```{r}
@@ -426,8 +431,9 @@ library(tidyverse)
 dat.bal.cleaned <- ship_data |>
 
   mutate(price = (10^SPLog) / 1000000) |>
-#created the price column
+# created the price column
   mutate(DWT = as.numeric(str_remove_all(DWT, ","))) |>   # removed commas in DWT to make it all numeric
+# created a new column called OriginCountry that contains a clean labels for the country in which the ship was built  
   mutate(OriginCountry = case_when(
         Japan == 1 ~ "Japan",
         China..People.s.Republic.Of == 1 ~ "China",
@@ -435,16 +441,17 @@ dat.bal.cleaned <- ship_data |>
         Korea..South == 1 ~ "South Korea",
         Others.Country.Build == 1 ~ "other",
         TRUE ~ NA_character_)) |>    
-# created a new column called OriginCountry that contains a clean labels for the country in which the ship was built  
 
+
+# created a new column called Manufacturer that contains a clean labels for the manufacturer.
   mutate(Manufacturer = case_when(
         Caterpillar == 1 ~ "Caterpillar",
         MAN.B.W == 1 ~ "MAN-B&W",
         Wartsila == 1 ~ "Wartsila",
         Mitsubishi == 1 ~ "Mitsubishi",
-        TRUE ~ NA_character_)) |>   
-# created a new column called Manufacturer that contains a clean labels for the manufacturer. 
+        TRUE ~ NA_character_)) |>    
 
+# created a new column called PI.club that contains a clean labels for the P&I club.
   mutate(PI.club = case_when(
         Japan.P.I.Club == 1 ~ "Japan P&I Club",
         Gard == 1 ~ "Gard",
@@ -458,8 +465,8 @@ dat.bal.cleaned <- ship_data |>
         Others == 1 ~ "Other",
         Unknown == 1 ~ "Unknown",
         TRUE ~ NA_character_)) |>    
-# created a new column called PI.club that contains a clean labels for the P&I club.
 
+# created a new column called Class that contains a clean labels for the class. 
   mutate(Class = case_when(
         Nippon.Kaiji.Kyokai..IACS. == 1 ~ "Nippon Kaiji Kyokai (IACS)",
         Lloyd.s.Register == 1 ~ "Lloyd's Register",
@@ -470,8 +477,8 @@ dat.bal.cleaned <- ship_data |>
         With.Two.Classes == 1 ~ "With Two Classes",
         Disclassed == 1 ~ "Disclassed",
         TRUE ~ NA_character_)) |>   
-# created a new column called Class that contains a clean labels for the class. 
 
+# created a new column called FlagState that contains a clean labels for the flag state.
   mutate(FlagState = case_when(
         Panama == 1 ~ "Panama",
         Marshall.Islands == 1 ~ "Marshall Islands",
@@ -482,7 +489,6 @@ dat.bal.cleaned <- ship_data |>
         Others.Flag == 1 ~ "Other",
         With.two.flags == 1 ~ "With Two Flags",
         TRUE ~ NA_character_))     
-# created a new column called FlagState that contains a clean labels for the flag state.
 ```
 
 ## Data Summaries
@@ -509,6 +515,12 @@ Choose a categorical variable. Create a plot and corresponding numerical summary
 
 Solution:
 ```{r}
+#| label: fig-CountriesofOrigin
+#| fig-cap: "Ship Prices By Country of Origin"
+#| fig-width: 5
+#| fig-height: 3
+#| scale: "80%"
+#| fig-align: "center"
 #| size: scriptsize
 library(tidyverse)
 ggplot(dat.bal.cleaned |> drop_na(price, OriginCountry)) +         
@@ -519,11 +531,12 @@ ggplot(dat.bal.cleaned |> drop_na(price, OriginCountry)) +
   theme_bw() +
   labs(                       # created labels for the axes and a title
     x = "Country of Origin",
-    y = "Price (Millions)",
-    title = "Ship Prices by Country of Origin")
+    y = "Price (Millions)")
 ```
 
 ```{r}
+#| label: tbl-CountriesofOrigin
+#| tbl-align: "center"
 #| size: scriptsize
 library(e1071)
 library(knitr)
@@ -542,7 +555,6 @@ Country_table <- dat.bal.cleaned |>
 
 ```{r}
 #| label: tbl-countriesoforigin
-#| tbl-cap: "Bill length (mm) by species."
 #| tbl-align: "center"
 #| echo: false
 Country_table |>
@@ -555,6 +567,12 @@ Choose a quantitative variable. Create a plot and corresponding numerical summar
 
 Solution
 ```{r}
+#| label: fig-DWT
+#| fig-cap: "Ship Prices vs. Deadweight Tonnage"
+#| fig-width: 5
+#| fig-height: 3
+#| scale: "80%"
+#| fig-align: "center"
 #| size: scriptsize
 library(tidyverse)
 ggplot(dat.bal.cleaned |> drop_na(price, DWT)) +
@@ -570,8 +588,7 @@ ggplot(dat.bal.cleaned |> drop_na(price, DWT)) +
 
   labs(                       # created labels for the axes and a title
     x = "Deadweight Tonnage (DWT)",
-    y = "Price (Millions)",
-    title = "Ship Prices vs. Deadweight Tonnage")
+    y = "Price (Millions)")
 ```
 
 ```{r}
@@ -589,10 +606,11 @@ dwt_table <- dat.bal.cleaned |>
 
 ```{r}
 #| label: tbl-dwt
-#| tbl-cap: "Bill length (mm) by species."
 #| tbl-align: "center"
 #| echo: false
 dwt_table |>
   knitr::kable(digits = 2,                   # cleaned up presentation and made caption
              caption = "Summary Statistics of Ship Prices by DWT")
 ```
+
+Solution: There is little to no relationship between deadweight tonnage and ship price. The scatterplot shows a  spread of prices across all tonnage levels. The correlation coefficients (Pearson = −0.02, Spearman = 0.09, Kendall = 0.07) are all near zero (however the Pearson coefficient is negative while the other two are positive), indicating a weak relationship There are a few high-price outliers at lower tonnage levels as well, but it doesn't impact the trend line drastically.
