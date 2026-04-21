@@ -98,9 +98,14 @@ There are eight possible outcomes for Player A:
 **Use the Binomial distribution to compute the probability that Player A wins the match.  Make sure write out your probability statement and work to write it in terms of the distribution function (PMF/CDF) to plot the probability using `ggplot`.**
 
 Solution:
+P(X >= 2)
+= 1 - P(X < 2)
+= 1 - P(X <= 1)
+= 1 - F(1)
+
 ```{r}
 #| size: scriptsize
-1 - pbinom(1, size = 3, prob = 0.70) # 1 - P(X = 1 |n=3, p=0.70). Answer: 0.784
+1 - pbinom(1, size = 3, prob = 0.70) 
 
 library(tidyverse)
 
