@@ -192,7 +192,7 @@ solution:
 evaluate.row <- function(x) {
   if (x < 4) {
    return("low")} 
-  else if (x >= 4 & x <= 7) {
+  else if (x <= 7) {
    return("mid")} 
   else {
    return("high")}
@@ -205,8 +205,8 @@ sapply(df$x1, evaluate.row)
 Did we need to use loops or functions in (h.)-(j.)? That is, can we use vectorization to attain the same results in 1 line each? Where it is possible, write the line of code. Where it is not, explain why.
 
 Solution:
-In part h, I didn't need to use a for loop. I could have instead gone line by line and used vectorization such as x1[1] * x2[1]
-for part i, the same thing could be done. the code would have been x1[1] * 2 + x2[1] - x3[1]
+In part h, I didn't need to use a for loop. I could have instead gone line by line and used vectorization such as df$x1 * df$x2
+for part i, the same thing could be done. the code would have been x1 * 2 + x2 - x3
 in part j, I did not need to use a for loop. (seen above)
 
 # Complete Tasks for One Recipe
@@ -244,7 +244,7 @@ Find the name of the Ingredients section of the website and pull the HTML of the
 Solution:
 ```{r}
 #| size: "scriptsize"
-ingredients.section <- html_element(html, "#ingredients") # created object called ingredients.section which pulled the html of the ingredients section
+ingredients.section <- html_element(html, "#ingredients") # pulled the html of the ingredients section. Asked for elements by id.
 ```
 
 ## Part d
@@ -301,13 +301,7 @@ image.url <- paste("website/", sourcelink, sep = "") # created the full link as 
 Now that we have all the things we need, let's try to print the recipe. Below, I have written code to print from the objects. One by one, remove `#| eval: false` from the YAML header and add `#| echo: false` and `#| results: 'asis'`, and test. Let me know if you're stuck!
 
 **Image**
-
-```{r}
-#| echo: false
-#| results: 'asis'
-# width="50%" shrinks the image for printing
-cat(paste('<img src="', image.url, '" style="width: 50%; height: auto;">'))
-```
+![yum](website/images/KimchiGrilledCheese.jpg)
 
 **Ingredients**
 
@@ -343,11 +337,13 @@ When you render this document, no code should be visible. Instead, you should se
 ## Why a fake website?
 Read [https://www.scrapingbee.com/blog/is-web-scraping-legal/](Is Web Sraping Legal?). Originally, I conceived doing this with recipes from Purple Carrot (my favorite subscription service). Being a large company, their terms of service are *very* long and precluded us from copying their recipes. We also checked a few smaller recipe websites we like and even they had terms of service that restricted automated collection of data.
 
+Solution: You had to create a fake website because it is technically not legal to scrape data containing personal information or copyrighted content. All of the websites you wanted us to potentially use contained copyrighted material, so for legal purposes, you had to create your own website.
+
 ## Conditionals
 Did you use conditional statements in your code? If yes, how. If not, are there places you could have used them but did something else?
 
 Solution:
-I did not use any conditionals in my code for the menu. I could have used a conditional statement when making my total ingredients list on the first page of the menu. I could have made it so if an ingredient was already on the list, I could code it to not add it again.
+I did not use any conditionals in my code for the menu. I could have used a conditional statement when making my total ingredients list on the first page of the menu. I could have made it so if an ingredient was already on the list, I could code it to combine it.
 
 ## Loops
 Did you use loops in your code? If yes, how. If not, are there places you could have used them but did something else?

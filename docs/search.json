@@ -214,7 +214,7 @@
     "href": "04-Lab-Programming/Lab4WriteUp.html#part-j",
     "title": "Lab Four – Programming in R",
     "section": "1.11 Part j",
-    "text": "1.11 Part j\nCreate a function called evaluate.row(...) that takes one argument and returns “low” when the argument is less than 4, “mid” when the argument is between 4 and 7 (inclusive), and “high” when the arguement is 8 or larger. Then, use sapply(...) to apply it to column x1.\nsolution:\n\n\n\nCode\nevaluate.row &lt;- function(x) {\n  if (x &lt; 4) {\n   return(\"low\")} \n  else if (x &gt;= 4 & x &lt;= 7) {\n   return(\"mid\")} \n  else {\n   return(\"high\")}\n}\n\nsapply(df$x1, evaluate.row)\n\n\n [1] \"high\" \"low\"  \"mid\"  \"low\"  \"low\"  \"low\"  \"low\"  \"low\"  \"mid\"  \"low\"",
+    "text": "1.11 Part j\nCreate a function called evaluate.row(...) that takes one argument and returns “low” when the argument is less than 4, “mid” when the argument is between 4 and 7 (inclusive), and “high” when the arguement is 8 or larger. Then, use sapply(...) to apply it to column x1.\nsolution:\n\n\n\nCode\nevaluate.row &lt;- function(x) {\n  if (x &lt; 4) {\n   return(\"low\")} \n  else if (x &lt;= 7) {\n   return(\"mid\")} \n  else {\n   return(\"high\")}\n}\n\nsapply(df$x1, evaluate.row)\n\n\n [1] \"high\" \"low\"  \"mid\"  \"low\"  \"low\"  \"low\"  \"low\"  \"low\"  \"mid\"  \"low\"",
     "crumbs": [
       "Lab Four -- Programming in R"
     ]
@@ -224,7 +224,7 @@
     "href": "04-Lab-Programming/Lab4WriteUp.html#part-k",
     "title": "Lab Four – Programming in R",
     "section": "1.12 Part k",
-    "text": "1.12 Part k\nDid we need to use loops or functions in (h.)-(j.)? That is, can we use vectorization to attain the same results in 1 line each? Where it is possible, write the line of code. Where it is not, explain why.\nSolution: In part h, I didn’t need to use a for loop. I could have instead gone line by line and used vectorization such as x1[1] * x2[1] for part i, the same thing could be done. the code would have been x1[1] * 2 + x2[1] - x3[1] in part j, I did not need to use a for loop. (seen above)",
+    "text": "1.12 Part k\nDid we need to use loops or functions in (h.)-(j.)? That is, can we use vectorization to attain the same results in 1 line each? Where it is possible, write the line of code. Where it is not, explain why.\nSolution: In part h, I didn’t need to use a for loop. I could have instead gone line by line and used vectorization such as df\\(x1 * df\\)x2 for part i, the same thing could be done. the code would have been x1 * 2 + x2 - x3 in part j, I did not need to use a for loop. (seen above)",
     "crumbs": [
       "Lab Four -- Programming in R"
     ]
@@ -254,7 +254,7 @@
     "href": "04-Lab-Programming/Lab4WriteUp.html#part-c-1",
     "title": "Lab Four – Programming in R",
     "section": "2.3 Part c",
-    "text": "2.3 Part c\nOpen the html file in a web browser and open developer tools. In chrome-based browsers, you can do this by pressing the three verticle dots in the upper-right corner, clicking “more tools”, then “developer tools”.\nFind the name of the Ingredients section of the website and pull the HTML of the function using html_element(...) and save the results to an object called ingredients.section.  Hint: You can ask for elements by id using a preceeding “#”. See ?html_element(...) for a helpful example.\nSolution:\n\n\n\nCode\ningredients.section &lt;- html_element(html, \"#ingredients\") # created object called ingredients.section which pulled the html of the ingredients section",
+    "text": "2.3 Part c\nOpen the html file in a web browser and open developer tools. In chrome-based browsers, you can do this by pressing the three verticle dots in the upper-right corner, clicking “more tools”, then “developer tools”.\nFind the name of the Ingredients section of the website and pull the HTML of the function using html_element(...) and save the results to an object called ingredients.section.  Hint: You can ask for elements by id using a preceeding “#”. See ?html_element(...) for a helpful example.\nSolution:\n\n\n\nCode\ningredients.section &lt;- html_element(html, \"#ingredients\") # pulled the html of the ingredients section. Asked for elements by id.",
     "crumbs": [
       "Lab Four -- Programming in R"
     ]
@@ -314,7 +314,7 @@
     "href": "04-Lab-Programming/Lab4WriteUp.html#part-i-1",
     "title": "Lab Four – Programming in R",
     "section": "2.9 Part i",
-    "text": "2.9 Part i\nNow that we have all the things we need, let’s try to print the recipe. Below, I have written code to print from the objects. One by one, remove #| eval: false from the YAML header and add #| echo: false and #| results: 'asis', and test. Let me know if you’re stuck!\nImage\n\n\n\nIngredients\n\n\n1/8 tsp chili flakes\n4 garlic cloves\n5 oz spinach\n1 tsp gochujang\n3 tsp mayonnaise\n2/3 cup kimchi\n4 slices of bread\n2/3 cup cheddar cheese\n4 tablespoons everything seasoning.\n\n\nInstructions\n\n\nIn a frying pan, heat 2 tablespoons olive oil with chili flakes.\nAdd spinach and cook until wilted.\nMix gochujang and mayonnaise in a small bowl and spread on one side of each slice of bread. Sprinkle with everything seasoning and press it into the bread.\nBuild sandwiches by layering spinach, kimchi, and cheese between two slices of bread.\nFry in butter until golden brown on both sides.",
+    "text": "2.9 Part i\nNow that we have all the things we need, let’s try to print the recipe. Below, I have written code to print from the objects. One by one, remove #| eval: false from the YAML header and add #| echo: false and #| results: 'asis', and test. Let me know if you’re stuck!\nImage \nIngredients\n\n\n1/8 tsp chili flakes\n4 garlic cloves\n5 oz spinach\n1 tsp gochujang\n3 tsp mayonnaise\n2/3 cup kimchi\n4 slices of bread\n2/3 cup cheddar cheese\n4 tablespoons everything seasoning.\n\n\nInstructions\n\n\nIn a frying pan, heat 2 tablespoons olive oil with chili flakes.\nAdd spinach and cook until wilted.\nMix gochujang and mayonnaise in a small bowl and spread on one side of each slice of bread. Sprinkle with everything seasoning and press it into the bread.\nBuild sandwiches by layering spinach, kimchi, and cheese between two slices of bread.\nFry in butter until golden brown on both sides.",
     "crumbs": [
       "Lab Four -- Programming in R"
     ]
@@ -324,7 +324,7 @@
     "href": "04-Lab-Programming/Lab4WriteUp.html#why-a-fake-website",
     "title": "Lab Four – Programming in R",
     "section": "4.1 Why a fake website?",
-    "text": "4.1 Why a fake website?\nRead https://www.scrapingbee.com/blog/is-web-scraping-legal/. Originally, I conceived doing this with recipes from Purple Carrot (my favorite subscription service). Being a large company, their terms of service are very long and precluded us from copying their recipes. We also checked a few smaller recipe websites we like and even they had terms of service that restricted automated collection of data.",
+    "text": "4.1 Why a fake website?\nRead https://www.scrapingbee.com/blog/is-web-scraping-legal/. Originally, I conceived doing this with recipes from Purple Carrot (my favorite subscription service). Being a large company, their terms of service are very long and precluded us from copying their recipes. We also checked a few smaller recipe websites we like and even they had terms of service that restricted automated collection of data.\nSolution: You had to create a fake website because it is technically not legal to scrape data containing personal information or copyrighted content. All of the websites you wanted us to potentially use contained copyrighted material, so for legal purposes, you had to create your own website.",
     "crumbs": [
       "Lab Four -- Programming in R"
     ]
@@ -334,7 +334,7 @@
     "href": "04-Lab-Programming/Lab4WriteUp.html#conditionals",
     "title": "Lab Four – Programming in R",
     "section": "4.2 Conditionals",
-    "text": "4.2 Conditionals\nDid you use conditional statements in your code? If yes, how. If not, are there places you could have used them but did something else?\nSolution: I did not use any conditionals in my code for the menu. I could have used a conditional statement when making my total ingredients list on the first page of the menu. I could have made it so if an ingredient was already on the list, I could code it to not add it again.",
+    "text": "4.2 Conditionals\nDid you use conditional statements in your code? If yes, how. If not, are there places you could have used them but did something else?\nSolution: I did not use any conditionals in my code for the menu. I could have used a conditional statement when making my total ingredients list on the first page of the menu. I could have made it so if an ingredient was already on the list, I could code it to combine it.",
     "crumbs": [
       "Lab Four -- Programming in R"
     ]
