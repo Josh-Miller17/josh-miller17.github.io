@@ -104,6 +104,12 @@ P(X >= 2)
 = 1 - F(1)
 
 ```{r}
+#| label: fig-box-billlength
+#| fig-cap: "PMF and CDF plots"
+#| fig-width: 5
+#| fig-height: 3
+#| scale: "80%"
+#| fig-align: "center"
 #| size: scriptsize
 1 - pbinom(1, size = 3, prob = 0.70) 
 
@@ -126,6 +132,15 @@ PMF.plot <- ggplot() +                 # created the plot for the PMF
   ylab("Probability") +
   theme_bw()
 
+# created CDF plot
+CDF.plot <- ggplot(ggdat, aes(x = x, y = CDF)) +
+  geom_step() +
+  geom_point() +
+  scale_x_continuous(breaks = 0:4) +
+  ylab("F(x) = P(X <= x)") +
+  theme_bw()
+
+CDF.plot
 PMF.plot
 ```
 
@@ -139,6 +154,12 @@ Solution:
 The two cases in which player A can win are by having zero losses until the second win (W, W) where P(X = 0) and where player A has one loss before the second win (W, L, W or L, W, W) where P(X = 1). Overall the probability using the CDF becomes P(X <= 1) where X is the number of failures which will yield the same result as 1 - P(X = 1) where X is the number of wins.
 
 ```{r}
+#| label: neg-binom-PMF
+#| fig-cap: "Negative Binomial PMF"
+#| fig-width: 5
+#| fig-height: 3
+#| scale: "80%"
+#| fig-align: "center"
 #| size: scriptsize
 pnbinom(1, size = 2, prob = 0.70) # P(X =< 1 |n=2, p=0.70). Answer: 0.784
 
@@ -211,7 +232,7 @@ Solution:
 ```{r}
 #| size: scriptsize
 
-mean <- function(p){p * dbeta(p, 3, 7)} # created mean function
+mean <- function(p){p * dbeta(p, 7, 3)} # created mean function
 integrate(mean, 0, 1)$value             # used integrate function to find the mean
 
 u <- 0.7
@@ -250,7 +271,7 @@ ggplot(ggdat) +
 1. **What is the probability that Player A has a win probability of at least 0.50?  Make sure write out your probability statement and work to write it in terms of the distribution function (PDF/CDF) to plot the probability using `ggplot`.**
 
 Solution:
-Probability Statement: P(p>=0.50)
+Probability Statement: P(p >= 0.50)
 ```{r}
 #| size: scriptsize
 1 - pbeta(0.5, 7, 3) # 1 - P(p=0.5 |n=3, p=7)
@@ -321,7 +342,7 @@ prob_win <- dbbinom(2, size = 3, alpha = 7, beta = 3) + # prob Player A wins 2 m
 prob_win
 ```
 
-The binomial and negative binomial results yield a 0.784 probability which is higher than that of the beta binomial probability which is 0.70.
+The binomial and negative binomial results yield a 0.784 probability which is higher than that of the beta binomial probability which is 0.764.
 
 ```{r}
 #| size: scriptsize
@@ -401,8 +422,8 @@ daltbinom <- function(x, n, p, theta){
   i <- 0:n
   c <- sum(choose(n, i) * p^i * (1-p)^(n-i) * theta^(i * (n-i)))      # created c variable to plug into pmf function
 
-  pmf <- (1/c) * choose(n, x) * p^x * (1-p)^(n-x) * theta^(x * (n-x)) # created pmf function
-  return(pmf)
+  fxx <- choose(n, x) * p^x * (1-p)^(n-x) * theta^(x * (n-x))
+  return(fxx / c)
 }
 
 x_values <- 0:3
@@ -411,7 +432,9 @@ ggdat <- tibble(
   x = rep(x_values, times = length(thetas)),        # got the x's to be used in the function
   theta = rep(thetas, each = length(x_values))   # got the theta to be used in the function
 ) |> 
-  mutate(PMF = daltbinom(x, n = 3, p = 0.70, theta = theta))
+  rowwise() |>
+  mutate(PMF = daltbinom(x, n = 3, p = 0.70, theta = theta)) |>
+  ungroup()
 
 ggplot() +           # created plot for PMF
   geom_linerange(data = ggdat,
@@ -426,7 +449,7 @@ ggplot() +           # created plot for PMF
   theme_bw()
 ```
 
-When theta = 0.5, 3 wins is by far the most probable outcome, and winning two or more times is signficantly more probable than not. When theta = 1, the most common number of wins is two, however, it is still more probabile to win two or more times. When theta = 1.5, the most common result is two wins with a 0.3 probability, and winning two or more times is likely. In all three theta cases, the probability of winning 3 games is about 0.1 and the probability of winning 0 games is close to zero. The probabilityies that change are the probabilities of winning one or two games which both increase as theta increases.
+When theta = 0.5, 3 wins is by far the most probable outcome, and winning two or more times is signficantly more probable than not. When theta = 1, the most common number of wins is two, however, it is still more probabile to win two or more times. When theta = 1.5, the most common result is two wins with a 0.55 probability, and winning two or more times is likely. In all three theta cases, the probability of winning 0 games is close to zero. The probabilities that change are the probabilities of winning one or two games which both increase as theta increases.
 
 
 
@@ -479,8 +502,8 @@ prob_win <- function(theta){                  # calculated the Altham Multiplica
 }
 
 prob_win(0.5)        # calculating win probabilities for each theta
-prob_win(1)
-prob_win(1.5)
+prob_win(1) 
+prob_win(1.5)  
 
 table_data <- tibble(            # created a tibble to store the models and probabilities for plotting
   model = c("Altham 0.5", "Altham 1", "Altham 1.5",
@@ -524,21 +547,28 @@ Solution:
 library(tidyverse)
 
 daltbbinom <- function(x, n, a, b, theta){      # created function daltbbinom
-  sapply(x, function(x_values) {
-    integrand <- function(p) {                  # created function integrand
-        i <- 0:n  
-        c <- sum(choose(n, i) * p^i * (1-p)^(n-i) * theta^(i * (n-i)))      # created c variable to plug into pmf function (taken from daltbinom function in 3.1)
+  # If x not a whole number or out of bounds, prob is 0
+  if (x %% 1 != 0 | x < 0 | x > n) {
+    return(0)
+  }
+  # created function integrand
+  integrand <- function(p) {
+    c_vec <- sapply(p, function(p_val) {
+      i <- 0:n  
+      sum(choose(n, i) * p_val^i * (1-p_val)^(n-i) * theta^(i * (n-i)))
+    })      
+    # created c variable to plug into pmf function (taken from daltbinom function in 3.1)
 
-        altham_part <- (1/c) * choose(n, x_values) * p^x_values * (1-p)^(n-x_values) * theta^(x_values * (n - x_values)) 
-        # created the altham PMF part directly from the lab
+    altham_part <- (1/c_vec) * choose(n, x) * p^x * (1-p)^(n-x) * theta^(x * (n - x)) 
+      # created the altham PMF part directly from the lab
 
-        beta_part <- dbeta(p, a, b) # created the beta density part directly from the lab
+    beta_part <- dbeta(p, a, b) # created the beta density part directly from the lab
 
-        altham_part * beta_part
-    }
-    integrate(integrand, lower = 0, upper = 1)$value   # used integrate to apply my integrand function from above 
-  })
-}           
+    return(altham_part * beta_part)
+  }
+  return(integrate(integrand, lower = 0, upper = 1)$value)   # used integrate to apply my integrand function from above 
+}
+           
 
 x_values <- 0:3
 thetas = c(0.50, 1, 1.50) 
@@ -546,9 +576,10 @@ ggdat_altbb <- tibble(                              # created data to be plotted
   x = rep(x_values, times = length(thetas)),        # got the x's to be used in the function
   theta = rep(thetas, each = length(x_values))      # got the theta to be used in the function
 ) |> 
-  mutate(PMF = mapply(function(x, theta) {
-    daltbbinom(x, n = 3, a = 7, b = 3, theta = theta)
-  }, x, theta))                                    # took this section almost directly from the daltbinom part in 3.1
+  rowwise() |>
+  mutate(PMF = daltbbinom(x, n = 3, a = 7, b = 3, theta = theta)) |>                                   
+  ungroup()
+  # took this section almost directly from the daltbinom part in 3.1
 
 ggplot(ggdat_altbb, aes(x = x, y = PMF)) +           # created plot for PMF
   geom_linerange(aes(ymin = 0, ymax = PMF)) +           
@@ -559,7 +590,7 @@ ggplot(ggdat_altbb, aes(x = x, y = PMF)) +           # created plot for PMF
   theme_bw()
 ```
 
-When theta = 0.5, the probability of winning three games is extremely high at 0.41, and the probability of winning at least two out of 3 games is more probable than not. When theta = 1, the probailities are closer to the original Beta-Binomial distribution. The combined probability of winning two or three games is greater than the combined probability of winning 0 or one games. When theta = 1.5, the most probable outcome is winning two games, but the combined probability of winning two or three games is greater than the combined probability of winning 0 or one games.
+When theta = 0.5, the probability of winning three games is extremely high at 0.62, and the probability of winning at least two out of 3 games is more probable than not. When theta = 1, the combined probability of winning two or three games is greater than the combined probability of winning 0 or one games with the probability of winning either two or three games each at around 0.4. When theta = 1.5, the most probable outcome is winning two games, but the combined probability of winning two or three games is greater than the combined probability of winning 0 or one games.
 
 # A Comparison
 Compute the probabilities for all outcomes for Player A.
