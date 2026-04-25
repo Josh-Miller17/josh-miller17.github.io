@@ -1,0 +1,94 @@
+---
+title: Unit 3 - Everything You Need to Know About Probability Distributions # Title of the document
+
+# Bibliography Details
+bibliographystyle: apa            # Bibliography style
+
+execute:               # Default settings for code blocks
+  warning: false       # Do not print warnings
+  message: false       # Do not print messages
+  size: "scriptsize"   # Set code size to script size
+
+# Below will do html by default. To render the entire project
+# Use the following code:
+# quarto::quarto_render("Lab8WriteUp.qmd")
+format:
+  pdf:        # Specify .pdf formatting options 
+    documentclass: article     # Document Class
+    number-sections: true      # Number Sections
+    reference-section-title: "References" # Title for reference section
+    code-line-numbers: true    # Line numbers printed in code
+    cap-location: top          # Captions at the top of tables 
+    geometry:
+      - top=0.75in
+      - left=0.75in
+      - bottom=0.75in
+      - right=0.75in
+  html:       # Specify HTML formatting options 
+    number-sections: true      # Number Sections
+    code-fold: true            # Button to show code
+    code-line-numbers: true    # Line numbers printed in code
+    cap-location: top          # Captions at the top of tables and figures
+format-links: [pdf]
+---
+```{r}
+#| echo: false
+
+default_chunk_hook  <- knitr::knit_hooks$get("chunk")
+
+latex_font_size <- c("Huge", "huge", "LARGE", "Large", 
+                     "large", "normalsize", "small", 
+                     "footnotesize", "scriptsize", "tiny")
+
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- default_chunk_hook(x, options)
+  if(options$size %in% latex_font_size) {
+    paste0("\n \\", options$size, "\n\n", 
+      x, 
+      "\n\n \\normalsize"
+    )
+  } else {
+    x
+  }
+})
+```
+
+```{r}
+#| label: load-packages
+#| include: false
+library(tidyverse)
+library(patchwork)
+```
+
+# Introduction to Probability
+In data science, we rarely have the luxury of seeing the "whole picture." This is largely due to the fact that being able to attain data of entire country, population, or demographic can both be extremely time consuming and expensive. Due to this, we work with samples—small windows into a larger reality. The goal of probability is to take these samples and guess the **blueprint** of the entire population. 
+
+To accomplish this we will follow this guideline: 
+
+1. Establish What a Random Variable Is
+2. Dive Into the Discrete Distribution
+3. Dive Into the Continuous Distribution
+
+# The Random Variable
+
+The way to describe the **blueprint** is to use two ideas, namely the **random variable** and the **support**
+
+The **random variable** is like a numerical bridge. It takes a real-world event (like a car crash) and turns it into a number ($X$) that math can understand. It is can be a characteristic, attribute, measurement, or any descriptive piece of data to depict an observation. 
+
+Additionally, when talking about random variables, you have to mention the **Support**. The **Support** is the list of "allowable" realities.Analogy: If you are at a restaurant, the Support is the menu (everything you could order). The **Distribution** is the record of what people actually ordered. 
+
+The random variable can take on different forms  either being classified as **quantitative** or **categorical**
+
+1. A **Quantitative** variable implies that the data assumes numerical values. 
+2. A **Categorical** variable implies the data are grouped (either by a common attribute, or category, or species, or any other grouping descriptor). Examples include: the species of an animal.
+
+For our purposes, we will be looking specifically at **Quantitative** variables. Quantitative variables can take on two forms (or **Distributions**) amongst themselves. They are either:
+
+1. **Discrete** - Implies the variable can be counted (e.g., 1, 2, 3, 4, or the number goals scored in a sporting game).
+2. **Continuous** - Implies the variable can take on an infinite number of values in a given range. Continuous variables are measured and can represent any value along a continuum, such as time, weight, or distance as opposed to being measured in whole numbers.
+
+# The Discrete Distribution
+
+When our support (or "menu") consists of distinct, countable outcomes (like the number of goals in a match or relapses in a year) we use Discrete models. Discrete models use three different tools to illustrate how the data looks 
+
+The first 

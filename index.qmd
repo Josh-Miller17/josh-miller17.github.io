@@ -1,7 +1,18 @@
 ---
-title: "josh-miller17.github.io"
+title: "Index"
 ---
 
 This is a Quarto website.
+This website contains all of my lab reports from my time in Math 240: Computational Statistics at Colgate University. 
+
+On this website, you can find labs among the following statistical topics:
+
+1. Basic tasks in R
+2. Matricies and dataframes in R
+3. Programming and data visualization in R
+4. Data wrangling and cleaning in R
+5. Probability 
+6. Point Estimation
+7. Point Estimation, resampling, and Bootstrapping
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.

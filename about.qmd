@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "About Me"
 ---
 
-About this site
+My name is Josh Miller and I am graduating senior from Colgate University. I am a Mathematical Economics major with an interest in finance and data analytics. This website was created to act as a portfolio to showcase my fundemental understanding of the software "R". If you have any questions about any of the work done on this website, feel free to email me at jhmiller@colgate.edu.  
