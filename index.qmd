@@ -14,5 +14,6 @@ On this website, you can find labs among the following statistical topics:
 5. Probability 
 6. Point Estimation
 7. Point Estimation, resampling, and Bootstrapping
+8. A detailed review on probability
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
