@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About Me – Josh Miller Portfolio</title>
+<title>Unit 3 - Everything You Need to Know About Probability Distributions – Josh Miller Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -81,7 +110,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./about.html">About Me</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Josh Miller Portfolio
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -109,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./about.html" class="sidebar-item-text sidebar-link active">
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About Me</span></a>
   </div>
 </li>
@@ -160,15 +191,23 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-probability" id="toc-introduction-to-probability" class="nav-link active" data-scroll-target="#introduction-to-probability"><span class="header-section-number">1</span> Introduction to Probability</a></li>
+  <li><a href="#the-random-variable" id="toc-the-random-variable" class="nav-link" data-scroll-target="#the-random-variable"><span class="header-section-number">2</span> The Random Variable</a></li>
+  <li><a href="#the-discrete-distribution" id="toc-the-discrete-distribution" class="nav-link" data-scroll-target="#the-discrete-distribution"><span class="header-section-number">3</span> The Discrete Distribution</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ProbabilityReview.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About Me</h1>
+<h1 class="title">Unit 3 - Everything You Need to Know About Probability Distributions</h1>
 </div>
 
 
@@ -185,9 +224,41 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>My name is Josh Miller and I am graduating senior from Colgate University. I am a Mathematical Economics major with an interest in finance and data analytics. This website was created to act as a portfolio to showcase my fundemental understanding of the software “R”. If you have any questions about any of the work done on this website, feel free to email me at jhmiller@colgate.edu.</p>
+<p></p>
+<p></p>
+<section id="introduction-to-probability" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction to Probability</h1>
+<p>In data science, we rarely have the luxury of seeing the “whole picture.” This is largely due to the fact that being able to attain data of entire country, population, or demographic can both be extremely time consuming and expensive. Due to this, we work with samples—small windows into a larger reality. The goal of probability is to take these samples and guess the <strong>blueprint</strong> of the entire population.</p>
+<p>To accomplish this we will follow this guideline:</p>
+<ol type="1">
+<li>Establish What a Random Variable Is</li>
+<li>Dive Into the Discrete Distribution</li>
+<li>Dive Into the Continuous Distribution</li>
+</ol>
+</section>
+<section id="the-random-variable" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> The Random Variable</h1>
+<p>The way to describe the <strong>blueprint</strong> is to use two ideas, namely the <strong>random variable</strong> and the <strong>support</strong></p>
+<p>The <strong>random variable</strong> is like a numerical bridge. It takes a real-world event (like a car crash) and turns it into a number (<span class="math inline">\(X\)</span>) that math can understand. It is can be a characteristic, attribute, measurement, or any descriptive piece of data to depict an observation.</p>
+<p>Additionally, when talking about random variables, you have to mention the <strong>Support</strong>. The <strong>Support</strong> is the list of “allowable” realities.Analogy: If you are at a restaurant, the Support is the menu (everything you could order). The <strong>Distribution</strong> is the record of what people actually ordered.</p>
+<p>The random variable can take on different forms either being classified as <strong>quantitative</strong> or <strong>categorical</strong></p>
+<ol type="1">
+<li>A <strong>Quantitative</strong> variable implies that the data assumes numerical values.</li>
+<li>A <strong>Categorical</strong> variable implies the data are grouped (either by a common attribute, or category, or species, or any other grouping descriptor). Examples include: the species of an animal.</li>
+</ol>
+<p>For our purposes, we will be looking specifically at <strong>Quantitative</strong> variables. Quantitative variables can take on two forms (or <strong>Distributions</strong>) amongst themselves. They are either:</p>
+<ol type="1">
+<li><strong>Discrete</strong> - Implies the variable can be counted (e.g., 1, 2, 3, 4, or the number goals scored in a sporting game).</li>
+<li><strong>Continuous</strong> - Implies the variable can take on an infinite number of values in a given range. Continuous variables are measured and can represent any value along a continuum, such as time, weight, or distance as opposed to being measured in whole numbers.</li>
+</ol>
+</section>
+<section id="the-discrete-distribution" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> The Discrete Distribution</h1>
+<p>When our support (or “menu”) consists of distinct, countable outcomes (like the number of goals in a match or relapses in a year) we use Discrete models. Discrete models use three different tools to illustrate how the data looks</p>
+<p>The first</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
