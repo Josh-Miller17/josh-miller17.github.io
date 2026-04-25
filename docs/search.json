@@ -100,104 +100,271 @@
     ]
   },
   {
-    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-a",
-    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-a",
-    "title": "Lab Two – Basic Tasks in R",
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html",
+    "href": "04-Lab-Programming/Lab4WriteUp.html",
+    "title": "Lab Four – Programming in R",
+    "section": "",
+    "text": "In this lab, we will build a mealkit recipe generator. I created a small website of about 40 recipes. We will scrape recipes from that website, randomly select three meals, and print a grocery list with recipe cards.",
+    "crumbs": [
+      "Lab Four -- Programming in R"
+    ]
+  },
+  {
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-a",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-a",
+    "title": "Lab Four – Programming in R",
     "section": "1.1 Part a",
-    "text": "1.1 Part a\nInstall the esquisse package for R. Report the code below, ensuring to set the eval option to false, using “#| eval: false”, so that we don’t install the package every time you compile your Quarto document.\nSolution:\n\n\n\nCode\ninstall.packages(\"esquisse\")\n\n\n\nI used the install packages function to install the esquisse package as seen above.",
+    "text": "1.1 Part a\nBelow, I create a numeric vector filled with random observations. Ask for the 3rd item. Note: The set.seed(7272) portion ensures we all get the same answer.\n\n\n\nCode\nset.seed(7272) # sets the randomization seed for replication\nx &lt;- sample(x=1:10,          # sample from 1, 2, 3, ..., 10 \n            size=10,         # sample of 10\n            replace = TRUE)  # allowed to sample the same item multiple times\n\nx[3] # Solution\n\n\n[1] 5",
     "crumbs": [
-      "Lab Two -- Basic Tasks in R"
+      "Lab Four -- Programming in R"
     ]
   },
   {
-    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-b",
-    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-b",
-    "title": "Lab Two – Basic Tasks in R",
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-b",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-b",
+    "title": "Lab Four – Programming in R",
     "section": "1.2 Part b",
-    "text": "1.2 Part b\nLoad the esquisse package for R. Report the code below. It does not matter whether you set “#| eval: false” because loading the package does not add a lot of time. Note you will not evaluate any code that uses the esquisse package, so there is no need to load it as you compile your Quarto document.\nSolution:\n\n\n\nCode\nlibrary(esquisse)",
+    "text": "1.2 Part b\nBelow, I create a data frame filled with random observations.\n\n\n\nCode\nset.seed(7272) # sets the randomization seed for replication\ndf &lt;- data.frame(x1 = sample(x=1:10,          # sample from 1, 2, 3, ..., 10 \n                             size=10,         # sample of 10\n                             replace = TRUE), # allowed to sample the same item multiple times\n                 x2 = sample(x=1:10,          # sample from 1, 2, 3, ..., 10 \n                             size=10,         # sample of 10\n                             replace = TRUE), # allowed to sample the same item multiple times\n                 x3 = sample(x=1:10,          # sample from 1, 2, 3, ..., 10 \n                             size=10,         # sample of 10\n                             replace = TRUE)  # allowed to sample the same item multiple times,\n)",
     "crumbs": [
-      "Lab Two -- Basic Tasks in R"
+      "Lab Four -- Programming in R"
     ]
   },
   {
-    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-c",
-    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-c",
-    "title": "Lab Two – Basic Tasks in R",
-    "section": "1.3 Part c",
-    "text": "1.3 Part c\nHow can you ask for help about the esquisse package for R? Report the code below, ensuring to set the eval option to false, using “#| eval: false”, so that the help document isn’t loaded every time you compile your Quarto document.\nSolution:\n\n\n\nCode\nhelp(\"esquisse\")",
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-b-1",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-b-1",
+    "title": "Lab Four – Programming in R",
+    "section": "1.3 Part b",
+    "text": "1.3 Part b\nUse the head(...) function to peek at the data frame.\nsolution:\n\n\n\nCode\nhead(df) # used head function to get first few rows\n\n\n  x1 x2 x3\n1  8  1  8\n2  3  7  2\n3  5  3  3\n4  3  6  2\n5  2  2  3\n6  3  8 10",
     "crumbs": [
-      "Lab Two -- Basic Tasks in R"
+      "Lab Four -- Programming in R"
     ]
   },
   {
-    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-d",
-    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-d",
-    "title": "Lab Two – Basic Tasks in R",
-    "section": "1.4 Part d",
-    "text": "1.4 Part d\nIs a demo or vignette available for the esquisse package for R? Report the code below, ensuring to set the eval option to false, using “#| eval: false”, so that the you don’t get errors when you compile your Quarto document.\nSolution:\n\n\n\nCode\ndemo(\"esquisse\")\nvignette(\"esquisse\")\n\n\n\nThe demo was not available, however there were two vignettes that were available",
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-c",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-c",
+    "title": "Lab Four – Programming in R",
+    "section": "1.4 Part c",
+    "text": "1.4 Part c\nAsk for the column x1.\nsolution:\n\n\n\nCode\ndf[, \"x1\"] # got vector of x1 column\n\n\n [1] 8 3 5 3 2 3 1 2 6 2",
     "crumbs": [
-      "Lab Two -- Basic Tasks in R"
+      "Lab Four -- Programming in R"
     ]
   },
   {
-    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-e",
-    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-e",
-    "title": "Lab Two – Basic Tasks in R",
-    "section": "1.5 Part e",
-    "text": "1.5 Part e\nAdd the BibTeX citation for esquisse package for R to your .bib file and cite it in a sentence describing what the package does below. Note you can reference a citation named esquisse using “[@esquisse]”. \nSolution: the package (Perrier, Meyer, and Granjon 2025) explores and visualizes data interactively",
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-d",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-d",
+    "title": "Lab Four – Programming in R",
+    "section": "1.5 Part d",
+    "text": "1.5 Part d\nAsk for the fifth row of the data frame.\nSolution:\n\n\n\nCode\ndf[5, ] # got vector of fifth row of df\n\n\n  x1 x2 x3\n5  2  2  3",
     "crumbs": [
-      "Lab Two -- Basic Tasks in R"
+      "Lab Four -- Programming in R"
     ]
   },
   {
-    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-f",
-    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-f",
-    "title": "Lab Two – Basic Tasks in R",
-    "section": "1.6 Part f",
-    "text": "1.6 Part f\nRun esquisser() in your console – not in a chunk of R code in your Quarto document.\n\nSelect palmerpenguins from the “Select an environment in which to search:” dropdown. This should automatically select penguins in the “Select a data.frame:” dropdown. Click “Import Data”.\nDrag body_mass_g to the X box and species to the fill box.\nDescribe what you see in words. What can you conclude about Adelie, Chinstrap, and Gentoo penguins based on the resulting plot?\n\nSolution: I can see a histogram with the x axis representing body mass in grams, ranging from 2500 to 6000. The y axis is the count, or number, of pengins at each mass. The data is colored in red, green and blue with the Adelie, Chinstrap, and Gentoo penguins each representing their respective colors. From the plot, the Adelie penguins are the lightest penguins and have the highest number of observations. The Adelie penguin seems to typically. be between 3000 and 4000 grams. the Chinstrap penguins are more spread out, but seem to be the second lightest penguin species. The Gentoo penguins also have a wide spread, but seem to be the heaviest penguins mostly ranging from 4500 to 5500 grams.",
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-e",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-e",
+    "title": "Lab Four – Programming in R",
+    "section": "1.6 Part e",
+    "text": "1.6 Part e\nAsk for the the value of x1 in the fifth row of the data frame.\nSolution:\n\n\n\nCode\ndf[5, \"x1\"] # got the value of x1 in fifth row\n\n\n[1] 2",
     "crumbs": [
-      "Lab Two -- Basic Tasks in R"
+      "Lab Four -- Programming in R"
     ]
   },
   {
-    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-a-1",
-    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-a-1",
-    "title": "Lab Two – Basic Tasks in R",
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-f",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-f",
+    "title": "Lab Four – Programming in R",
+    "section": "1.7 Part f",
+    "text": "1.7 Part f\nAsk for the the value of in the third column and the fifth row of the data frame.\nSolution:\n\n\n\nCode\ndf[5, 3] # got value of fifth row, column 3\n\n\n[1] 3",
+    "crumbs": [
+      "Lab Four -- Programming in R"
+    ]
+  },
+  {
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-g",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-g",
+    "title": "Lab Four – Programming in R",
+    "section": "1.8 Part g",
+    "text": "1.8 Part g\nCreate a sequence from 1 to 10 by 2 and use it to print the odd rows of the data frame.\n\n\n\nCode\nodds &lt;- seq(1, 10, by = 2) # created sequence \ndf[odds, ] # printed sequence\n\n\n  x1 x2 x3\n1  8  1  8\n3  5  3  3\n5  2  2  3\n7  1 10  1\n9  6  2 10",
+    "crumbs": [
+      "Lab Four -- Programming in R"
+    ]
+  },
+  {
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-h",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-h",
+    "title": "Lab Four – Programming in R",
+    "section": "1.9 Part h",
+    "text": "1.9 Part h\nBelow, I create an empty column called x12. Fill in the details of the for(...) loop to ensure x12 is the product of x1 and x2.\n\n\n\nCode\nn &lt;- nrow(df)                # How many rows to we have to fill?\ndf$x12 &lt;- rep(NA, nrow(df))   # Create an empty column for x12\nfor(i in 1:nrow(df)){\n  df$x12[i] &lt;- df$x1[i] * df$x2[i] # created the values for column x12\n}",
+    "crumbs": [
+      "Lab Four -- Programming in R"
+    ]
+  },
+  {
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-i",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-i",
+    "title": "Lab Four – Programming in R",
+    "section": "1.10 Part i",
+    "text": "1.10 Part i\nWrite a function called calculate.score(...) that takes three arguments representing x1, x2, and x3) and returns a single value based on the formula: \\[Score = (x_1 \\times 2) + x_2 - x_3\\] Use your function to create a new column total.score in our data frame df.\nSolution\n\n\n\nCode\ncalculate.score &lt;- function(x1, x2, x3) {\n  score &lt;- (2 * x1) + x2 - x3\n  return(score)} # created the calc.score function\n\nn &lt;- nrow(df)                # How many rows to we have to fill?\ntotal.score &lt;- rep(NA, nrow(df))   # Create an empty column for x12\nfor(i in 1:nrow(df)){\n  df$total.score[i] &lt;- calculate.score(df$x1[i], df$x3[i], df$x3[i]) } # used a for loop to fill total.score column",
+    "crumbs": [
+      "Lab Four -- Programming in R"
+    ]
+  },
+  {
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-j",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-j",
+    "title": "Lab Four – Programming in R",
+    "section": "1.11 Part j",
+    "text": "1.11 Part j\nCreate a function called evaluate.row(...) that takes one argument and returns “low” when the argument is less than 4, “mid” when the argument is between 4 and 7 (inclusive), and “high” when the arguement is 8 or larger. Then, use sapply(...) to apply it to column x1.\nsolution:\n\n\n\nCode\nevaluate.row &lt;- function(x) {\n  if (x &lt; 4) {\n   return(\"low\")} \n  else if (x &lt;= 7) {\n   return(\"mid\")} \n  else {\n   return(\"high\")}\n}\n\nsapply(df$x1, evaluate.row)\n\n\n [1] \"high\" \"low\"  \"mid\"  \"low\"  \"low\"  \"low\"  \"low\"  \"low\"  \"mid\"  \"low\"",
+    "crumbs": [
+      "Lab Four -- Programming in R"
+    ]
+  },
+  {
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-k",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-k",
+    "title": "Lab Four – Programming in R",
+    "section": "1.12 Part k",
+    "text": "1.12 Part k\nDid we need to use loops or functions in (h.)-(j.)? That is, can we use vectorization to attain the same results in 1 line each? Where it is possible, write the line of code. Where it is not, explain why.\nSolution: In part h, I didn’t need to use a for loop. I could have instead gone line by line and used vectorization such as df\\(x1 * df\\)x2 for part i, the same thing could be done. the code would have been x1 * 2 + x2 - x3 in part j, I did not need to use a for loop. (seen above)",
+    "crumbs": [
+      "Lab Four -- Programming in R"
+    ]
+  },
+  {
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-a-1",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-a-1",
+    "title": "Lab Four – Programming in R",
     "section": "2.1 Part a",
-    "text": "2.1 Part a\nThe Fibonacci Sequence is a recursive formula: \\[F_n = F_{n-1} + F_{n-2}\\] where \\(F_0=0\\) and \\(F_1=1\\).\nCreate a vector of the first 10 Fibonacci numbers.\nSolution:\n\n\n\nCode\n(fibonacci &lt;- c(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)) # created fib vector for part 2.a\n\n\n [1]  0  1  1  2  3  5  8 13 21 34",
+    "text": "2.1 Part a\nInstall and load the rvest package (Wickham 2025).\nSolution:\n\n\n\nCode\n# install.packages(\"rvest\") # installed rvest\nlibrary(\"rvest\") # loaded rvest",
     "crumbs": [
-      "Lab Two -- Basic Tasks in R"
+      "Lab Four -- Programming in R"
     ]
   },
   {
-    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-b-1",
-    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-b-1",
-    "title": "Lab Two – Basic Tasks in R",
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-b-2",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-b-2",
+    "title": "Lab Four – Programming in R",
     "section": "2.2 Part b",
-    "text": "2.2 Part b\nTriangular Numbers are the cumulative sums of natural numbers: \\[F_n = \\frac{n(n+1)}{2}.\\]\nCreate a vector of the first 10 Triangular Numbers.\nSolution:\n\n\n\nCode\n(n &lt;- seq(from = 1, to = 10, by = 1)) # created the vector for the n to be used in the final vector\n\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\n\nCode\n(tri.vector &lt;- n*(n+1)/2) # created the triangular numbers vector\n\n\n [1]  1  3  6 10 15 21 28 36 45 55",
+    "text": "2.2 Part b\nLoad the html of the website/KimchiGrilledCheese.html using the read_html() function. We will use the Kimchi Grilled Cheese recipe as our prototype and extend this workflow to all recipes, so try to be as general as possible. If you do look at it, you’ll notice it contains the html we saw in the developer tools in class. Hint: You can use read_html(...) like read.csv(...). Don’t forget you can use the documentation to help use it.\nSolution:\n\n\n\nCode\nhtml &lt;- read_html(\"website/KimchiGrilledCheese.html\") # loaded the html and saved it as an object called html",
     "crumbs": [
-      "Lab Two -- Basic Tasks in R"
+      "Lab Four -- Programming in R"
     ]
   },
   {
-    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-c-1",
-    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-c-1",
-    "title": "Lab Two – Basic Tasks in R",
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-c-1",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-c-1",
+    "title": "Lab Four – Programming in R",
     "section": "2.3 Part c",
-    "text": "2.3 Part c\nSuppose I were designing a repeated meausres experiment with three treatment conditions. Each of \\(n=10\\) participants (with ID 1 to 10) will receive all experimental conditions, call them “Control”, “Treatment A”, and “Treatment B”.\nConsider setting up data entry for this experiment.\n\nCreate a vector containing each ID repeated three times, once for each treatment.\nCreate a vector containing each Treatment repeated for each participant ID.\n\nSolution:\n\n\n\nCode\n(id &lt;- seq(1:10)) # create ID object\n\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\n\nCode\n(id.vector &lt;- rep(id, each = 3)) # create ID vector\n\n\n [1]  1  1  1  2  2  2  3  3  3  4  4  4  5  5  5  6  6  6  7  7  7  8  8  8  9\n[26]  9  9 10 10 10\n\n\nCode\n(treatments &lt;- c(\"Control\", \"Treatment A\", \"Treatment B\")) # manually create treatements object\n\n\n[1] \"Control\"     \"Treatment A\" \"Treatment B\"\n\n\nCode\n(treatments.vector &lt;- rep(treatments, times = 10)) # create treatments vector\n\n\n [1] \"Control\"     \"Treatment A\" \"Treatment B\" \"Control\"     \"Treatment A\"\n [6] \"Treatment B\" \"Control\"     \"Treatment A\" \"Treatment B\" \"Control\"    \n[11] \"Treatment A\" \"Treatment B\" \"Control\"     \"Treatment A\" \"Treatment B\"\n[16] \"Control\"     \"Treatment A\" \"Treatment B\" \"Control\"     \"Treatment A\"\n[21] \"Treatment B\" \"Control\"     \"Treatment A\" \"Treatment B\" \"Control\"    \n[26] \"Treatment A\" \"Treatment B\" \"Control\"     \"Treatment A\" \"Treatment B\"",
+    "text": "2.3 Part c\nOpen the html file in a web browser and open developer tools. In chrome-based browsers, you can do this by pressing the three verticle dots in the upper-right corner, clicking “more tools”, then “developer tools”.\nFind the name of the Ingredients section of the website and pull the HTML of the function using html_element(...) and save the results to an object called ingredients.section.  Hint: You can ask for elements by id using a preceeding “#”. See ?html_element(...) for a helpful example.\nSolution:\n\n\n\nCode\ningredients.section &lt;- html_element(html, \"#ingredients\") # pulled the html of the ingredients section. Asked for elements by id.",
     "crumbs": [
-      "Lab Two -- Basic Tasks in R"
+      "Lab Four -- Programming in R"
     ]
   },
   {
-    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-d-1",
-    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-d-1",
-    "title": "Lab Two – Basic Tasks in R",
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-d-1",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-d-1",
+    "title": "Lab Four – Programming in R",
     "section": "2.4 Part d",
-    "text": "2.4 Part d\nCreate a vector containing the character “MATH” and the numeric 240. What is the resulting class? Explain why in a sentence.\nSolution: (vector &lt;- c(“MATH”, 240)) # created vector class(vector) # checked class of the vector the vector had a class “character” because although the vector contains both a character and a numeric object, all the data takes the class of the item all the way to the right, which is a character in this case",
+    "text": "2.4 Part d\nNow, we want to obtain all of the itemized items. Find the element type the individual ingredients and pull all of them from ingredients.section using html_elements(...) (note the added s) and save the results to an object called ingredients. Hint: You can ask for elements by type by simply specifying the tag (e.g., “p” for paragraph). See `?html_element for a helpful example.\nSolution:\n\n\n\nCode\ningredients &lt;- html_elements(ingredients.section, \"li\") # created object called ingredients which pulled the items of the ingredients section",
     "crumbs": [
-      "Lab Two -- Basic Tasks in R"
+      "Lab Four -- Programming in R"
     ]
+  },
+  {
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-e-1",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-e-1",
+    "title": "Lab Four – Programming in R",
+    "section": "2.5 Part e",
+    "text": "2.5 Part e\nSimilar to Part c. Find the name of the Instructions section of the website and pull the HTML of the function using html_element(...) and save the results to an object called instructions.section.\nSolution:\n\n\n\nCode\ninstructions.section &lt;- html_element(html, \"#instructions\") # created object called instructions.section which pulled the html of the instructions section",
+    "crumbs": [
+      "Lab Four -- Programming in R"
+    ]
+  },
+  {
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-f-1",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-f-1",
+    "title": "Lab Four – Programming in R",
+    "section": "2.6 Part f",
+    "text": "2.6 Part f\nNow, we want to obtain all of the enumerated items. Find the element type the individual instructions and pull all of them from instructions.section using html_elements(...) (note the added s) and save the results to an object called instructions.\nSolution:\n\n\n\nCode\ninstructions &lt;- html_elements(instructions.section, \"li\") # created object called instructions which pulled the items of the instructions section",
+    "crumbs": [
+      "Lab Four -- Programming in R"
+    ]
+  },
+  {
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-g-1",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-g-1",
+    "title": "Lab Four – Programming in R",
+    "section": "2.7 Part g",
+    "text": "2.7 Part g\nFind the class of the recipe image and pull the HTML using html_element(...) and save the results to an object called image.element.  Hint: You can ask for elements by class using a preceeding “.”. See ?html_element(...) for a helpful example. Further, note that HTML elements may have more than one class (separated by a space). When that is the case, you need to choose one.\nSolution:\n\n\n\nCode\nimage.element &lt;- html_element(html, \".quarto-figure\") # created object called image.element which pulled the html of the image",
+    "crumbs": [
+      "Lab Four -- Programming in R"
+    ]
+  },
+  {
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-h-1",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-h-1",
+    "title": "Lab Four – Programming in R",
+    "section": "2.8 Part h",
+    "text": "2.8 Part h\nUse the html_attr(...) function to pull the source link (“src”). Then, use paste(...) to prepend the source link with “website/” so we have the full link. Note: This would be like adding “https://www.website.com” to get the absolute link.\nSolution\n\n\n\nCode\nimage &lt;- html_element(image.element, \"img\") # got the image tag using the image type and the object created in part g\nsourcelink &lt;- html_attr(image, \"src\") # pulled the source link for the image and saved it as an object\nimage.url &lt;- paste(\"website/\", sourcelink, sep = \"\") # created the full link as an object using the paste function",
+    "crumbs": [
+      "Lab Four -- Programming in R"
+    ]
+  },
+  {
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-i-1",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#part-i-1",
+    "title": "Lab Four – Programming in R",
+    "section": "2.9 Part i",
+    "text": "2.9 Part i\nNow that we have all the things we need, let’s try to print the recipe. Below, I have written code to print from the objects. One by one, remove #| eval: false from the YAML header and add #| echo: false and #| results: 'asis', and test. Let me know if you’re stuck!\nImage \nIngredients\n\n\n1/8 tsp chili flakes\n4 garlic cloves\n5 oz spinach\n1 tsp gochujang\n3 tsp mayonnaise\n2/3 cup kimchi\n4 slices of bread\n2/3 cup cheddar cheese\n4 tablespoons everything seasoning.\n\n\nInstructions\n\n\nIn a frying pan, heat 2 tablespoons olive oil with chili flakes.\nAdd spinach and cook until wilted.\nMix gochujang and mayonnaise in a small bowl and spread on one side of each slice of bread. Sprinkle with everything seasoning and press it into the bread.\nBuild sandwiches by layering spinach, kimchi, and cheese between two slices of bread.\nFry in butter until golden brown on both sides.",
+    "crumbs": [
+      "Lab Four -- Programming in R"
+    ]
+  },
+  {
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#why-a-fake-website",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#why-a-fake-website",
+    "title": "Lab Four – Programming in R",
+    "section": "4.1 Why a fake website?",
+    "text": "4.1 Why a fake website?\nRead https://www.scrapingbee.com/blog/is-web-scraping-legal/. Originally, I conceived doing this with recipes from Purple Carrot (my favorite subscription service). Being a large company, their terms of service are very long and precluded us from copying their recipes. We also checked a few smaller recipe websites we like and even they had terms of service that restricted automated collection of data.\nSolution: You had to create a fake website because it is technically not legal to scrape data containing personal information or copyrighted content. All of the websites you wanted us to potentially use contained copyrighted material, so for legal purposes, you had to create your own website.",
+    "crumbs": [
+      "Lab Four -- Programming in R"
+    ]
+  },
+  {
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#conditionals",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#conditionals",
+    "title": "Lab Four – Programming in R",
+    "section": "4.2 Conditionals",
+    "text": "4.2 Conditionals\nDid you use conditional statements in your code? If yes, how. If not, are there places you could have used them but did something else?\nSolution: I did not use any conditionals in my code for the menu. I could have used a conditional statement when making my total ingredients list on the first page of the menu. I could have made it so if an ingredient was already on the list, I could code it to combine it.",
+    "crumbs": [
+      "Lab Four -- Programming in R"
+    ]
+  },
+  {
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#loops",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#loops",
+    "title": "Lab Four – Programming in R",
+    "section": "4.3 Loops",
+    "text": "4.3 Loops\nDid you use loops in your code? If yes, how. If not, are there places you could have used them but did something else?\nI did use a for loop in my code to make so I wouldn’t have to go through and create an ingredients, instructions, and image section for each recepie. Instead I created a vector of all the recepies and looped from the first one to the last one and created the three recepie parts for each inside the loop.",
+    "crumbs": [
+      "Lab Four -- Programming in R"
+    ]
+  },
+  {
+    "objectID": "04-Lab-Programming/Lab4WriteUp.html#functions",
+    "href": "04-Lab-Programming/Lab4WriteUp.html#functions",
+    "title": "Lab Four – Programming in R",
+    "section": "4.4 Functions",
+    "text": "4.4 Functions\nDid you use functions in your code? If yes, how. If not, are there places you could have used them but did something else?\nI did use functions inside my code for the menu, specifically the same ones we used in part two of the lab such as html_element, html_elements, html_text, html_attr, paste, and sample which I learned for the randomization element.",
+    "crumbs": [
+      "Lab Four -- Programming in R"
+    ]
+  },
+  {
+    "objectID": "ProbabilityReview/ProbabilityReview.html",
+    "href": "ProbabilityReview/ProbabilityReview.html",
+    "title": "Unit 3 - Everything You Need to Know About Probability Distributions",
+    "section": "",
+    "text": "1 Introduction to Probability\nIn data science, we rarely have the luxury of seeing the “whole picture.” This is largely due to the fact that being able to attain data of entire country, population, or demographic can both be extremely time consuming and expensive. Due to this, we work with samples—small windows into a larger reality. The goal of probability is to take these samples and guess the blueprint of the entire population.\nTo accomplish this we will follow this guideline:\n\nEstablish What a Random Variable Is\nDive Into the Discrete Distribution\nDive Into the Continuous Distribution\n\n\n\n2 The Random Variable\nThe way to describe the blueprint is to use two ideas, namely the random variable and the support\nThe random variable is like a numerical bridge. It takes a real-world event (like a car crash) and turns it into a number (\\(X\\)) that math can understand. It is can be a characteristic, attribute, measurement, or any descriptive piece of data to depict an observation.\nAdditionally, when talking about random variables, you have to mention the Support. The Support is the list of “allowable” realities.Analogy: If you are at a restaurant, the Support is the menu (everything you could order). The Distribution is the record of what people actually ordered.\nThe random variable can take on different forms either being classified as quantitative or categorical\n\nA Quantitative variable implies that the data assumes numerical values.\nA Categorical variable implies the data are grouped (either by a common attribute, or category, or species, or any other grouping descriptor). Examples include: the species of an animal.\n\nFor our purposes, we will be looking specifically at Quantitative variables. Quantitative variables can take on two forms (or Distributions) amongst themselves. They are either:\n\nDiscrete - Implies the variable can be counted (e.g., 1, 2, 3, 4, or the number goals scored in a sporting game).\nContinuous - Implies the variable can take on an infinite number of values in a given range. Continuous variables are measured and can represent any value along a continuum, such as time, weight, or distance as opposed to being measured in whole numbers.\n\n\n\n3 The Discrete Distribution\nWhen our support (or “menu”) consists of distinct, countable outcomes (like the number of goals in a match or relapses in a year) we use Discrete models. Discrete models use three different tools to illustrate how the data looks.\nThe first is called the Probability Mass Function (PMF). This is our tool for precision. It answers the question: “What are the odds of seeing exactly \\(x\\)?”. An example for this could be if you flipped a coin 10 times, what are the odds of landing on heads exactly six times. Mathematically, we define this as:\n\\[f_X(x) = P(X = x)\\]\nThe second tool is called the Cumulative Density Function (CDF). A lot of times, an analyst doesn’t care about the probability of being “exactly 2.” They care about risk: “What is the probability there are at most two goals scored in a game.” This is the Cumulative Distribution Function (CDF). It acts as a running total of our PMF. Mathematically it can be defined as:\n\\[F_X(x) = P(X \\leq x) = \\sum_{i \\in S, i \\leq x} f_X(i)\\]\nThe final tool for the discrete distribution is the Inverse CDF. In the soccer example, the CDF tells you: “What is the probability of scoring 2 or fewer goals?” The Inverse CDF flips the script and shows: “How many goals do I need to score to be in the top 10% of teams?” The mathematical definition is:\n\\[F_X^{-1}(p) = \\inf \\{x \\in \\mathbb{R} : F_X(x) \\geq p\\}\\]\nTo illustrate the discrete distribution and it’s tools, I used data from the English Premiere League from (English Premier League 2024) to collect data on the number of goals scored per match. The data follows a Poisson Distribution with lambda = 1.39.\n\n\n\nCode\n# loaded data as epl_raw\nepl_raw &lt;- read_csv(\"E0.csv\")\n\n# Got number of goals and combined home and away into one 'population'\nepl_goals &lt;- epl_raw |&gt;\n  select(FTHG, FTAG) |&gt;\n  pivot_longer(cols = everything(), \n               names_to = \"team_type\", \n               values_to = \"goals_scored\")\n\n# Calc avg goal rate (Lambda)\navg_goals &lt;- mean(epl_goals$goals_scored)\n\n\n\n\n\n\nCode\n# caluclated stored average goals as lambda\nlambda.dat &lt;- avg_goals\nggdat &lt;- tibble(x = 0:10) |&gt; \n  mutate(PMF = dpois(x, lambda = lambda.dat),\n         CDF = ppois(x, lambda = lambda.dat))\n\n# created PMF Plot \nPMF.plot &lt;- ggplot() +\n  geom_linerange(data = ggdat,\n                 aes(x = x, ymin = 0, ymax = PMF)) +\n  geom_linerange(data = ggdat |&gt; filter(x == 1),\n                 aes(x = x, ymin = 0, ymax = PMF),\n                 color = \"darkorchid2\", linewidth = 2, alpha = 0.50) +\n  geom_hline(yintercept = 0) +\n  scale_x_continuous(\"Goals Scored (x)\", breaks = 0:10) +\n  ylab(\"Probability\") +\n  theme_bw()\n\n# created the CDF Plot\nCDF.plot &lt;- ggplot() +\n  geom_step(data = ggdat, aes(x = x, y = CDF)) +\n  geom_point(data = ggdat, aes(x = x, y = CDF)) +\n  geom_point(data = ggdat |&gt; filter(x &lt;= 1),\n             aes(x = x, y = CDF),\n             color = \"darkorchid2\", size = 2.5, alpha = 0.50) +\n  geom_hline(yintercept = 0) +\n  scale_x_continuous(\"Goals Scored (x)\", breaks = 0:10) +\n  ylab(\"Cumulative Probability\") +\n  theme_bw()\n\n# plotted using patchwork\nPMF.plot | CDF.plot\n\n\n\n\nVisualizing the probability of scoring exactly 1 goal (PMF) and at most 1 goal (CDF)\n\n\n\n\n\n\nThe PMF (left plot) shows the probability of a game having exactly one goal scored in the game highlighted in purple. The mathematical equation to represent that can be seen below: \\[f_X(1) = P(X = 1)\\]\nThe CDF (right plot) shows the probability of a game having at most one goal scored. Notice how in the CDF, the height of the line is the summation of the individual probabilities illustrated in the left plot. This can be seen as the probability of zero goals being scored is about 0.23. The probability of one goal being scored is about 0.35. The probability of at most one goal being scored (one goal or zero goals) is equal to 0.58 which is a summation of the first two numbers. The mathematical equation can be seen below: \\[F_X(1) = P(X \\leq 1) = \\sum_{i \\in S, i \\leq x} f_X(i)\\]\n\n\n\n\n\n\n\n\n4 The Continuous Distribution\n\nEnglish Premier League. 2024. Match Results Season 2024/25. https://www.football-data.co.uk/."
   },
   {
     "objectID": "about.html",
@@ -700,270 +867,103 @@
     ]
   },
   {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html",
-    "href": "04-Lab-Programming/Lab4WriteUp.html",
-    "title": "Lab Four – Programming in R",
-    "section": "",
-    "text": "In this lab, we will build a mealkit recipe generator. I created a small website of about 40 recipes. We will scrape recipes from that website, randomly select three meals, and print a grocery list with recipe cards.",
-    "crumbs": [
-      "Lab Four -- Programming in R"
-    ]
-  },
-  {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-a",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-a",
-    "title": "Lab Four – Programming in R",
+    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-a",
+    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-a",
+    "title": "Lab Two – Basic Tasks in R",
     "section": "1.1 Part a",
-    "text": "1.1 Part a\nBelow, I create a numeric vector filled with random observations. Ask for the 3rd item. Note: The set.seed(7272) portion ensures we all get the same answer.\n\n\n\nCode\nset.seed(7272) # sets the randomization seed for replication\nx &lt;- sample(x=1:10,          # sample from 1, 2, 3, ..., 10 \n            size=10,         # sample of 10\n            replace = TRUE)  # allowed to sample the same item multiple times\n\nx[3] # Solution\n\n\n[1] 5",
+    "text": "1.1 Part a\nInstall the esquisse package for R. Report the code below, ensuring to set the eval option to false, using “#| eval: false”, so that we don’t install the package every time you compile your Quarto document.\nSolution:\n\n\n\nCode\ninstall.packages(\"esquisse\")\n\n\n\nI used the install packages function to install the esquisse package as seen above.",
     "crumbs": [
-      "Lab Four -- Programming in R"
+      "Lab Two -- Basic Tasks in R"
     ]
   },
   {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-b",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-b",
-    "title": "Lab Four – Programming in R",
+    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-b",
+    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-b",
+    "title": "Lab Two – Basic Tasks in R",
     "section": "1.2 Part b",
-    "text": "1.2 Part b\nBelow, I create a data frame filled with random observations.\n\n\n\nCode\nset.seed(7272) # sets the randomization seed for replication\ndf &lt;- data.frame(x1 = sample(x=1:10,          # sample from 1, 2, 3, ..., 10 \n                             size=10,         # sample of 10\n                             replace = TRUE), # allowed to sample the same item multiple times\n                 x2 = sample(x=1:10,          # sample from 1, 2, 3, ..., 10 \n                             size=10,         # sample of 10\n                             replace = TRUE), # allowed to sample the same item multiple times\n                 x3 = sample(x=1:10,          # sample from 1, 2, 3, ..., 10 \n                             size=10,         # sample of 10\n                             replace = TRUE)  # allowed to sample the same item multiple times,\n)",
+    "text": "1.2 Part b\nLoad the esquisse package for R. Report the code below. It does not matter whether you set “#| eval: false” because loading the package does not add a lot of time. Note you will not evaluate any code that uses the esquisse package, so there is no need to load it as you compile your Quarto document.\nSolution:\n\n\n\nCode\nlibrary(esquisse)",
     "crumbs": [
-      "Lab Four -- Programming in R"
+      "Lab Two -- Basic Tasks in R"
     ]
   },
   {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-b-1",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-b-1",
-    "title": "Lab Four – Programming in R",
-    "section": "1.3 Part b",
-    "text": "1.3 Part b\nUse the head(...) function to peek at the data frame.\nsolution:\n\n\n\nCode\nhead(df) # used head function to get first few rows\n\n\n  x1 x2 x3\n1  8  1  8\n2  3  7  2\n3  5  3  3\n4  3  6  2\n5  2  2  3\n6  3  8 10",
+    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-c",
+    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-c",
+    "title": "Lab Two – Basic Tasks in R",
+    "section": "1.3 Part c",
+    "text": "1.3 Part c\nHow can you ask for help about the esquisse package for R? Report the code below, ensuring to set the eval option to false, using “#| eval: false”, so that the help document isn’t loaded every time you compile your Quarto document.\nSolution:\n\n\n\nCode\nhelp(\"esquisse\")",
     "crumbs": [
-      "Lab Four -- Programming in R"
+      "Lab Two -- Basic Tasks in R"
     ]
   },
   {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-c",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-c",
-    "title": "Lab Four – Programming in R",
-    "section": "1.4 Part c",
-    "text": "1.4 Part c\nAsk for the column x1.\nsolution:\n\n\n\nCode\ndf[, \"x1\"] # got vector of x1 column\n\n\n [1] 8 3 5 3 2 3 1 2 6 2",
+    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-d",
+    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-d",
+    "title": "Lab Two – Basic Tasks in R",
+    "section": "1.4 Part d",
+    "text": "1.4 Part d\nIs a demo or vignette available for the esquisse package for R? Report the code below, ensuring to set the eval option to false, using “#| eval: false”, so that the you don’t get errors when you compile your Quarto document.\nSolution:\n\n\n\nCode\ndemo(\"esquisse\")\nvignette(\"esquisse\")\n\n\n\nThe demo was not available, however there were two vignettes that were available",
     "crumbs": [
-      "Lab Four -- Programming in R"
+      "Lab Two -- Basic Tasks in R"
     ]
   },
   {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-d",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-d",
-    "title": "Lab Four – Programming in R",
-    "section": "1.5 Part d",
-    "text": "1.5 Part d\nAsk for the fifth row of the data frame.\nSolution:\n\n\n\nCode\ndf[5, ] # got vector of fifth row of df\n\n\n  x1 x2 x3\n5  2  2  3",
+    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-e",
+    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-e",
+    "title": "Lab Two – Basic Tasks in R",
+    "section": "1.5 Part e",
+    "text": "1.5 Part e\nAdd the BibTeX citation for esquisse package for R to your .bib file and cite it in a sentence describing what the package does below. Note you can reference a citation named esquisse using “[@esquisse]”. \nSolution: the package (Perrier, Meyer, and Granjon 2025) explores and visualizes data interactively",
     "crumbs": [
-      "Lab Four -- Programming in R"
+      "Lab Two -- Basic Tasks in R"
     ]
   },
   {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-e",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-e",
-    "title": "Lab Four – Programming in R",
-    "section": "1.6 Part e",
-    "text": "1.6 Part e\nAsk for the the value of x1 in the fifth row of the data frame.\nSolution:\n\n\n\nCode\ndf[5, \"x1\"] # got the value of x1 in fifth row\n\n\n[1] 2",
+    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-f",
+    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-f",
+    "title": "Lab Two – Basic Tasks in R",
+    "section": "1.6 Part f",
+    "text": "1.6 Part f\nRun esquisser() in your console – not in a chunk of R code in your Quarto document.\n\nSelect palmerpenguins from the “Select an environment in which to search:” dropdown. This should automatically select penguins in the “Select a data.frame:” dropdown. Click “Import Data”.\nDrag body_mass_g to the X box and species to the fill box.\nDescribe what you see in words. What can you conclude about Adelie, Chinstrap, and Gentoo penguins based on the resulting plot?\n\nSolution: I can see a histogram with the x axis representing body mass in grams, ranging from 2500 to 6000. The y axis is the count, or number, of pengins at each mass. The data is colored in red, green and blue with the Adelie, Chinstrap, and Gentoo penguins each representing their respective colors. From the plot, the Adelie penguins are the lightest penguins and have the highest number of observations. The Adelie penguin seems to typically. be between 3000 and 4000 grams. the Chinstrap penguins are more spread out, but seem to be the second lightest penguin species. The Gentoo penguins also have a wide spread, but seem to be the heaviest penguins mostly ranging from 4500 to 5500 grams.",
     "crumbs": [
-      "Lab Four -- Programming in R"
+      "Lab Two -- Basic Tasks in R"
     ]
   },
   {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-f",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-f",
-    "title": "Lab Four – Programming in R",
-    "section": "1.7 Part f",
-    "text": "1.7 Part f\nAsk for the the value of in the third column and the fifth row of the data frame.\nSolution:\n\n\n\nCode\ndf[5, 3] # got value of fifth row, column 3\n\n\n[1] 3",
-    "crumbs": [
-      "Lab Four -- Programming in R"
-    ]
-  },
-  {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-g",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-g",
-    "title": "Lab Four – Programming in R",
-    "section": "1.8 Part g",
-    "text": "1.8 Part g\nCreate a sequence from 1 to 10 by 2 and use it to print the odd rows of the data frame.\n\n\n\nCode\nodds &lt;- seq(1, 10, by = 2) # created sequence \ndf[odds, ] # printed sequence\n\n\n  x1 x2 x3\n1  8  1  8\n3  5  3  3\n5  2  2  3\n7  1 10  1\n9  6  2 10",
-    "crumbs": [
-      "Lab Four -- Programming in R"
-    ]
-  },
-  {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-h",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-h",
-    "title": "Lab Four – Programming in R",
-    "section": "1.9 Part h",
-    "text": "1.9 Part h\nBelow, I create an empty column called x12. Fill in the details of the for(...) loop to ensure x12 is the product of x1 and x2.\n\n\n\nCode\nn &lt;- nrow(df)                # How many rows to we have to fill?\ndf$x12 &lt;- rep(NA, nrow(df))   # Create an empty column for x12\nfor(i in 1:nrow(df)){\n  df$x12[i] &lt;- df$x1[i] * df$x2[i] # created the values for column x12\n}",
-    "crumbs": [
-      "Lab Four -- Programming in R"
-    ]
-  },
-  {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-i",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-i",
-    "title": "Lab Four – Programming in R",
-    "section": "1.10 Part i",
-    "text": "1.10 Part i\nWrite a function called calculate.score(...) that takes three arguments representing x1, x2, and x3) and returns a single value based on the formula: \\[Score = (x_1 \\times 2) + x_2 - x_3\\] Use your function to create a new column total.score in our data frame df.\nSolution\n\n\n\nCode\ncalculate.score &lt;- function(x1, x2, x3) {\n  score &lt;- (2 * x1) + x2 - x3\n  return(score)} # created the calc.score function\n\nn &lt;- nrow(df)                # How many rows to we have to fill?\ntotal.score &lt;- rep(NA, nrow(df))   # Create an empty column for x12\nfor(i in 1:nrow(df)){\n  df$total.score[i] &lt;- calculate.score(df$x1[i], df$x3[i], df$x3[i]) } # used a for loop to fill total.score column",
-    "crumbs": [
-      "Lab Four -- Programming in R"
-    ]
-  },
-  {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-j",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-j",
-    "title": "Lab Four – Programming in R",
-    "section": "1.11 Part j",
-    "text": "1.11 Part j\nCreate a function called evaluate.row(...) that takes one argument and returns “low” when the argument is less than 4, “mid” when the argument is between 4 and 7 (inclusive), and “high” when the arguement is 8 or larger. Then, use sapply(...) to apply it to column x1.\nsolution:\n\n\n\nCode\nevaluate.row &lt;- function(x) {\n  if (x &lt; 4) {\n   return(\"low\")} \n  else if (x &lt;= 7) {\n   return(\"mid\")} \n  else {\n   return(\"high\")}\n}\n\nsapply(df$x1, evaluate.row)\n\n\n [1] \"high\" \"low\"  \"mid\"  \"low\"  \"low\"  \"low\"  \"low\"  \"low\"  \"mid\"  \"low\"",
-    "crumbs": [
-      "Lab Four -- Programming in R"
-    ]
-  },
-  {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-k",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-k",
-    "title": "Lab Four – Programming in R",
-    "section": "1.12 Part k",
-    "text": "1.12 Part k\nDid we need to use loops or functions in (h.)-(j.)? That is, can we use vectorization to attain the same results in 1 line each? Where it is possible, write the line of code. Where it is not, explain why.\nSolution: In part h, I didn’t need to use a for loop. I could have instead gone line by line and used vectorization such as df\\(x1 * df\\)x2 for part i, the same thing could be done. the code would have been x1 * 2 + x2 - x3 in part j, I did not need to use a for loop. (seen above)",
-    "crumbs": [
-      "Lab Four -- Programming in R"
-    ]
-  },
-  {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-a-1",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-a-1",
-    "title": "Lab Four – Programming in R",
+    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-a-1",
+    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-a-1",
+    "title": "Lab Two – Basic Tasks in R",
     "section": "2.1 Part a",
-    "text": "2.1 Part a\nInstall and load the rvest package (Wickham 2025).\nSolution:\n\n\n\nCode\n# install.packages(\"rvest\") # installed rvest\nlibrary(\"rvest\") # loaded rvest",
+    "text": "2.1 Part a\nThe Fibonacci Sequence is a recursive formula: \\[F_n = F_{n-1} + F_{n-2}\\] where \\(F_0=0\\) and \\(F_1=1\\).\nCreate a vector of the first 10 Fibonacci numbers.\nSolution:\n\n\n\nCode\n(fibonacci &lt;- c(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)) # created fib vector for part 2.a\n\n\n [1]  0  1  1  2  3  5  8 13 21 34",
     "crumbs": [
-      "Lab Four -- Programming in R"
+      "Lab Two -- Basic Tasks in R"
     ]
   },
   {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-b-2",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-b-2",
-    "title": "Lab Four – Programming in R",
+    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-b-1",
+    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-b-1",
+    "title": "Lab Two – Basic Tasks in R",
     "section": "2.2 Part b",
-    "text": "2.2 Part b\nLoad the html of the website/KimchiGrilledCheese.html using the read_html() function. We will use the Kimchi Grilled Cheese recipe as our prototype and extend this workflow to all recipes, so try to be as general as possible. If you do look at it, you’ll notice it contains the html we saw in the developer tools in class. Hint: You can use read_html(...) like read.csv(...). Don’t forget you can use the documentation to help use it.\nSolution:\n\n\n\nCode\nhtml &lt;- read_html(\"website/KimchiGrilledCheese.html\") # loaded the html and saved it as an object called html",
+    "text": "2.2 Part b\nTriangular Numbers are the cumulative sums of natural numbers: \\[F_n = \\frac{n(n+1)}{2}.\\]\nCreate a vector of the first 10 Triangular Numbers.\nSolution:\n\n\n\nCode\n(n &lt;- seq(from = 1, to = 10, by = 1)) # created the vector for the n to be used in the final vector\n\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\n\nCode\n(tri.vector &lt;- n*(n+1)/2) # created the triangular numbers vector\n\n\n [1]  1  3  6 10 15 21 28 36 45 55",
     "crumbs": [
-      "Lab Four -- Programming in R"
+      "Lab Two -- Basic Tasks in R"
     ]
   },
   {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-c-1",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-c-1",
-    "title": "Lab Four – Programming in R",
+    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-c-1",
+    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-c-1",
+    "title": "Lab Two – Basic Tasks in R",
     "section": "2.3 Part c",
-    "text": "2.3 Part c\nOpen the html file in a web browser and open developer tools. In chrome-based browsers, you can do this by pressing the three verticle dots in the upper-right corner, clicking “more tools”, then “developer tools”.\nFind the name of the Ingredients section of the website and pull the HTML of the function using html_element(...) and save the results to an object called ingredients.section.  Hint: You can ask for elements by id using a preceeding “#”. See ?html_element(...) for a helpful example.\nSolution:\n\n\n\nCode\ningredients.section &lt;- html_element(html, \"#ingredients\") # pulled the html of the ingredients section. Asked for elements by id.",
+    "text": "2.3 Part c\nSuppose I were designing a repeated meausres experiment with three treatment conditions. Each of \\(n=10\\) participants (with ID 1 to 10) will receive all experimental conditions, call them “Control”, “Treatment A”, and “Treatment B”.\nConsider setting up data entry for this experiment.\n\nCreate a vector containing each ID repeated three times, once for each treatment.\nCreate a vector containing each Treatment repeated for each participant ID.\n\nSolution:\n\n\n\nCode\n(id &lt;- seq(1:10)) # create ID object\n\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\n\nCode\n(id.vector &lt;- rep(id, each = 3)) # create ID vector\n\n\n [1]  1  1  1  2  2  2  3  3  3  4  4  4  5  5  5  6  6  6  7  7  7  8  8  8  9\n[26]  9  9 10 10 10\n\n\nCode\n(treatments &lt;- c(\"Control\", \"Treatment A\", \"Treatment B\")) # manually create treatements object\n\n\n[1] \"Control\"     \"Treatment A\" \"Treatment B\"\n\n\nCode\n(treatments.vector &lt;- rep(treatments, times = 10)) # create treatments vector\n\n\n [1] \"Control\"     \"Treatment A\" \"Treatment B\" \"Control\"     \"Treatment A\"\n [6] \"Treatment B\" \"Control\"     \"Treatment A\" \"Treatment B\" \"Control\"    \n[11] \"Treatment A\" \"Treatment B\" \"Control\"     \"Treatment A\" \"Treatment B\"\n[16] \"Control\"     \"Treatment A\" \"Treatment B\" \"Control\"     \"Treatment A\"\n[21] \"Treatment B\" \"Control\"     \"Treatment A\" \"Treatment B\" \"Control\"    \n[26] \"Treatment A\" \"Treatment B\" \"Control\"     \"Treatment A\" \"Treatment B\"",
     "crumbs": [
-      "Lab Four -- Programming in R"
+      "Lab Two -- Basic Tasks in R"
     ]
   },
   {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-d-1",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-d-1",
-    "title": "Lab Four – Programming in R",
+    "objectID": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-d-1",
+    "href": "02-Lab-ObjectsInR/Lab2WriteUp.html#part-d-1",
+    "title": "Lab Two – Basic Tasks in R",
     "section": "2.4 Part d",
-    "text": "2.4 Part d\nNow, we want to obtain all of the itemized items. Find the element type the individual ingredients and pull all of them from ingredients.section using html_elements(...) (note the added s) and save the results to an object called ingredients. Hint: You can ask for elements by type by simply specifying the tag (e.g., “p” for paragraph). See `?html_element for a helpful example.\nSolution:\n\n\n\nCode\ningredients &lt;- html_elements(ingredients.section, \"li\") # created object called ingredients which pulled the items of the ingredients section",
+    "text": "2.4 Part d\nCreate a vector containing the character “MATH” and the numeric 240. What is the resulting class? Explain why in a sentence.\nSolution: (vector &lt;- c(“MATH”, 240)) # created vector class(vector) # checked class of the vector the vector had a class “character” because although the vector contains both a character and a numeric object, all the data takes the class of the item all the way to the right, which is a character in this case",
     "crumbs": [
-      "Lab Four -- Programming in R"
+      "Lab Two -- Basic Tasks in R"
     ]
-  },
-  {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-e-1",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-e-1",
-    "title": "Lab Four – Programming in R",
-    "section": "2.5 Part e",
-    "text": "2.5 Part e\nSimilar to Part c. Find the name of the Instructions section of the website and pull the HTML of the function using html_element(...) and save the results to an object called instructions.section.\nSolution:\n\n\n\nCode\ninstructions.section &lt;- html_element(html, \"#instructions\") # created object called instructions.section which pulled the html of the instructions section",
-    "crumbs": [
-      "Lab Four -- Programming in R"
-    ]
-  },
-  {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-f-1",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-f-1",
-    "title": "Lab Four – Programming in R",
-    "section": "2.6 Part f",
-    "text": "2.6 Part f\nNow, we want to obtain all of the enumerated items. Find the element type the individual instructions and pull all of them from instructions.section using html_elements(...) (note the added s) and save the results to an object called instructions.\nSolution:\n\n\n\nCode\ninstructions &lt;- html_elements(instructions.section, \"li\") # created object called instructions which pulled the items of the instructions section",
-    "crumbs": [
-      "Lab Four -- Programming in R"
-    ]
-  },
-  {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-g-1",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-g-1",
-    "title": "Lab Four – Programming in R",
-    "section": "2.7 Part g",
-    "text": "2.7 Part g\nFind the class of the recipe image and pull the HTML using html_element(...) and save the results to an object called image.element.  Hint: You can ask for elements by class using a preceeding “.”. See ?html_element(...) for a helpful example. Further, note that HTML elements may have more than one class (separated by a space). When that is the case, you need to choose one.\nSolution:\n\n\n\nCode\nimage.element &lt;- html_element(html, \".quarto-figure\") # created object called image.element which pulled the html of the image",
-    "crumbs": [
-      "Lab Four -- Programming in R"
-    ]
-  },
-  {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-h-1",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-h-1",
-    "title": "Lab Four – Programming in R",
-    "section": "2.8 Part h",
-    "text": "2.8 Part h\nUse the html_attr(...) function to pull the source link (“src”). Then, use paste(...) to prepend the source link with “website/” so we have the full link. Note: This would be like adding “https://www.website.com” to get the absolute link.\nSolution\n\n\n\nCode\nimage &lt;- html_element(image.element, \"img\") # got the image tag using the image type and the object created in part g\nsourcelink &lt;- html_attr(image, \"src\") # pulled the source link for the image and saved it as an object\nimage.url &lt;- paste(\"website/\", sourcelink, sep = \"\") # created the full link as an object using the paste function",
-    "crumbs": [
-      "Lab Four -- Programming in R"
-    ]
-  },
-  {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#part-i-1",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#part-i-1",
-    "title": "Lab Four – Programming in R",
-    "section": "2.9 Part i",
-    "text": "2.9 Part i\nNow that we have all the things we need, let’s try to print the recipe. Below, I have written code to print from the objects. One by one, remove #| eval: false from the YAML header and add #| echo: false and #| results: 'asis', and test. Let me know if you’re stuck!\nImage \nIngredients\n\n\n1/8 tsp chili flakes\n4 garlic cloves\n5 oz spinach\n1 tsp gochujang\n3 tsp mayonnaise\n2/3 cup kimchi\n4 slices of bread\n2/3 cup cheddar cheese\n4 tablespoons everything seasoning.\n\n\nInstructions\n\n\nIn a frying pan, heat 2 tablespoons olive oil with chili flakes.\nAdd spinach and cook until wilted.\nMix gochujang and mayonnaise in a small bowl and spread on one side of each slice of bread. Sprinkle with everything seasoning and press it into the bread.\nBuild sandwiches by layering spinach, kimchi, and cheese between two slices of bread.\nFry in butter until golden brown on both sides.",
-    "crumbs": [
-      "Lab Four -- Programming in R"
-    ]
-  },
-  {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#why-a-fake-website",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#why-a-fake-website",
-    "title": "Lab Four – Programming in R",
-    "section": "4.1 Why a fake website?",
-    "text": "4.1 Why a fake website?\nRead https://www.scrapingbee.com/blog/is-web-scraping-legal/. Originally, I conceived doing this with recipes from Purple Carrot (my favorite subscription service). Being a large company, their terms of service are very long and precluded us from copying their recipes. We also checked a few smaller recipe websites we like and even they had terms of service that restricted automated collection of data.\nSolution: You had to create a fake website because it is technically not legal to scrape data containing personal information or copyrighted content. All of the websites you wanted us to potentially use contained copyrighted material, so for legal purposes, you had to create your own website.",
-    "crumbs": [
-      "Lab Four -- Programming in R"
-    ]
-  },
-  {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#conditionals",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#conditionals",
-    "title": "Lab Four – Programming in R",
-    "section": "4.2 Conditionals",
-    "text": "4.2 Conditionals\nDid you use conditional statements in your code? If yes, how. If not, are there places you could have used them but did something else?\nSolution: I did not use any conditionals in my code for the menu. I could have used a conditional statement when making my total ingredients list on the first page of the menu. I could have made it so if an ingredient was already on the list, I could code it to combine it.",
-    "crumbs": [
-      "Lab Four -- Programming in R"
-    ]
-  },
-  {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#loops",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#loops",
-    "title": "Lab Four – Programming in R",
-    "section": "4.3 Loops",
-    "text": "4.3 Loops\nDid you use loops in your code? If yes, how. If not, are there places you could have used them but did something else?\nI did use a for loop in my code to make so I wouldn’t have to go through and create an ingredients, instructions, and image section for each recepie. Instead I created a vector of all the recepies and looped from the first one to the last one and created the three recepie parts for each inside the loop.",
-    "crumbs": [
-      "Lab Four -- Programming in R"
-    ]
-  },
-  {
-    "objectID": "04-Lab-Programming/Lab4WriteUp.html#functions",
-    "href": "04-Lab-Programming/Lab4WriteUp.html#functions",
-    "title": "Lab Four – Programming in R",
-    "section": "4.4 Functions",
-    "text": "4.4 Functions\nDid you use functions in your code? If yes, how. If not, are there places you could have used them but did something else?\nI did use functions inside my code for the menu, specifically the same ones we used in part two of the lab such as html_element, html_elements, html_text, html_attr, paste, and sample which I learned for the randomization element.",
-    "crumbs": [
-      "Lab Four -- Programming in R"
-    ]
-  },
-  {
-    "objectID": "ProbabilityReview.html",
-    "href": "ProbabilityReview.html",
-    "title": "Unit 3 - Everything You Need to Know About Probability Distributions",
-    "section": "",
-    "text": "1 Introduction to Probability\nIn data science, we rarely have the luxury of seeing the “whole picture.” This is largely due to the fact that being able to attain data of entire country, population, or demographic can both be extremely time consuming and expensive. Due to this, we work with samples—small windows into a larger reality. The goal of probability is to take these samples and guess the blueprint of the entire population.\nTo accomplish this we will follow this guideline:\n\nEstablish What a Random Variable Is\nDive Into the Discrete Distribution\nDive Into the Continuous Distribution\n\n\n\n2 The Random Variable\nThe way to describe the blueprint is to use two ideas, namely the random variable and the support\nThe random variable is like a numerical bridge. It takes a real-world event (like a car crash) and turns it into a number (\\(X\\)) that math can understand. It is can be a characteristic, attribute, measurement, or any descriptive piece of data to depict an observation.\nAdditionally, when talking about random variables, you have to mention the Support. The Support is the list of “allowable” realities.Analogy: If you are at a restaurant, the Support is the menu (everything you could order). The Distribution is the record of what people actually ordered.\nThe random variable can take on different forms either being classified as quantitative or categorical\n\nA Quantitative variable implies that the data assumes numerical values.\nA Categorical variable implies the data are grouped (either by a common attribute, or category, or species, or any other grouping descriptor). Examples include: the species of an animal.\n\nFor our purposes, we will be looking specifically at Quantitative variables. Quantitative variables can take on two forms (or Distributions) amongst themselves. They are either:\n\nDiscrete - Implies the variable can be counted (e.g., 1, 2, 3, 4, or the number goals scored in a sporting game).\nContinuous - Implies the variable can take on an infinite number of values in a given range. Continuous variables are measured and can represent any value along a continuum, such as time, weight, or distance as opposed to being measured in whole numbers.\n\n\n\n3 The Discrete Distribution\nWhen our support (or “menu”) consists of distinct, countable outcomes (like the number of goals in a match or relapses in a year) we use Discrete models. Discrete models use three different tools to illustrate how the data looks\nThe first"
   }
 ]
