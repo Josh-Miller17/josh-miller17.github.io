@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Unit 3 - Everything You Need to Know About Probability Distributions – Josh Miller Portfolio</title>
+<title>Unit 3 - Everything You Need to Know About General Probability Distributions – Josh Miller Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -255,6 +255,7 @@ window.Quarto = {
   <li><a href="#the-random-variable" id="toc-the-random-variable" class="nav-link" data-scroll-target="#the-random-variable"><span class="header-section-number">2</span> The Random Variable</a></li>
   <li><a href="#the-discrete-distribution" id="toc-the-discrete-distribution" class="nav-link" data-scroll-target="#the-discrete-distribution"><span class="header-section-number">3</span> The Discrete Distribution</a></li>
   <li><a href="#the-continuous-distribution" id="toc-the-continuous-distribution" class="nav-link" data-scroll-target="#the-continuous-distribution"><span class="header-section-number">4</span> The Continuous Distribution</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">5</span> Conclusion</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ProbabilityReview.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -263,7 +264,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unit 3 - Everything You Need to Know About Probability Distributions</h1>
+<h1 class="title">Unit 3 - Everything You Need to Know About General Probability Distributions</h1>
 </div>
 
 
@@ -284,7 +285,7 @@ window.Quarto = {
 <p></p>
 <section id="introduction-to-probability" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction to Probability</h1>
-<p>In data science, we rarely have the luxury of seeing the “whole picture.” This is largely due to the fact that being able to attain data of entire country, population, or demographic can both be extremely time consuming and expensive. Due to this, we work with samples—small windows into a larger reality. The goal of probability is to take these samples and guess the <strong>blueprint</strong> of the entire population.</p>
+<p>In data science, we oftentimes are unable to see the whole picture. This is largely due to the fact that being able to attain data of entire country, population, or demographic can both be extremely time consuming and expensive. Due to this, we work with samples which show a small glimpse of a larger reality. The goal of probability is to take these samples and guess the <strong>blueprint</strong> of the entire population.</p>
 <p>To accomplish this we will follow this guideline:</p>
 <ol type="1">
 <li>Establish What a Random Variable Is</li>
@@ -295,8 +296,8 @@ window.Quarto = {
 <section id="the-random-variable" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> The Random Variable</h1>
 <p>The way to describe the <strong>blueprint</strong> is to use two ideas, namely the <strong>random variable</strong> and the <strong>support</strong></p>
-<p>The <strong>random variable</strong> is like a numerical bridge. It takes a real-world event (like a car crash) and turns it into a number (<span class="math inline">\(X\)</span>) that math can understand. It is can be a characteristic, attribute, measurement, or any descriptive piece of data to depict an observation.</p>
-<p>Additionally, when talking about random variables, you have to mention the <strong>Support</strong>. The <strong>Support</strong> is the list of “allowable” realities.Analogy: If you are at a restaurant, the Support is the menu (everything you could order). The <strong>Distribution</strong> is the record of what people actually ordered.</p>
+<p>The <strong>random variable</strong> is like a numerical bridge. It takes a real-world event (like a car crash) and turns it into a number (<span class="math inline">\(X\)</span>). It is can be a characteristic, attribute, measurement, or any descriptive piece of data to depict an observation.</p>
+<p>Additionally, when talking about random variables, you have to mention the <strong>Support</strong>. The <strong>Support</strong> is the list of “allowable” realities. If you are at a restaurant, the Support is the menu (everything you could order). The <strong>Distribution</strong> is the record of what people actually ordered.</p>
 <p>The random variable can take on different forms either being classified as <strong>quantitative</strong> or <strong>categorical</strong></p>
 <ol type="1">
 <li>A <strong>Quantitative</strong> variable implies that the data assumes numerical values.</li>
@@ -305,15 +306,15 @@ window.Quarto = {
 <p>For our purposes, we will be looking specifically at <strong>Quantitative</strong> variables. Quantitative variables can take on two forms (or <strong>Distributions</strong>) amongst themselves. They are either:</p>
 <ol type="1">
 <li><strong>Discrete</strong> - Implies the variable can be counted (e.g., 1, 2, 3, 4, or the number goals scored in a sporting game).</li>
-<li><strong>Continuous</strong> - Implies the variable can take on an infinite number of values in a given range. Continuous variables are measured and can represent any value along a continuum, such as time, weight, or distance as opposed to being measured in whole numbers.</li>
+<li><strong>Continuous</strong> - Implies the variable can take on an infinite number of values in a given range. Continuous variables can represent any value along a continuum or spectrum, such as time, weight, or distance as opposed to being measured in whole numbers.</li>
 </ol>
 </section>
 <section id="the-discrete-distribution" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> The Discrete Distribution</h1>
 <p>When our support (or “menu”) consists of distinct, countable outcomes (like the number of goals in a match or relapses in a year) we use Discrete models. Discrete models use three different tools to illustrate how the data looks.</p>
-<p>The first is called the <strong>Probability Mass Function (PMF)</strong>. This is our tool for precision. It answers the question: “What are the odds of seeing exactly <span class="math inline">\(x\)</span>?”. An example for this could be if you flipped a coin 10 times, what are the odds of landing on heads exactly six times. Mathematically, we define this as:</p>
+<p>The first is called the <strong>Probability Mass Function (PMF)</strong>. It answers the question: “What are the odds of seeing exactly <span class="math inline">\(x\)</span>?”. An example for this could be if you flipped a coin 10 times, what are the odds of landing on heads exactly six times. Mathematically, we define this as:</p>
 <p><span class="math display">\[f_X(x) = P(X = x)\]</span></p>
-<p>The second tool is called the <strong>Cumulative Density Function (CDF)</strong>. A lot of times, an analyst doesn’t care about the probability of being “exactly 2.” They care about risk: “What is the probability there are at most two goals scored in a game.” This is the Cumulative Distribution Function (CDF). It acts as a running total of our PMF. Mathematically it can be defined as:</p>
+<p>The second tool is called the <strong>Cumulative Density Function (CDF)</strong>. A lot of times, data analysts dont’t care about the probability of being “exactly 2,” but they care about a wide range of possibilities. A more common question would be: “What is the probability there are at most two goals scored in a game.” This is the Cumulative Distribution Function (CDF). It acts as a running sum of our PMF. Mathematically it can be defined as:</p>
 <p><span class="math display">\[F_X(x) = P(X \leq x) = \sum_{i \in S, i \leq x} f_X(i)\]</span></p>
 <p>The final tool for the discrete distribution is the <strong>Inverse CDF</strong>. In the soccer example, the CDF tells you: “What is the probability of scoring 2 or fewer goals?” The Inverse CDF flips the script and shows: “How many goals do I need to score to be in the top 10% of teams?” The mathematical definition is:</p>
 <p><span class="math display">\[F_X^{-1}(p) = \inf \{x \in \mathbb{R} : F_X(x) \geq p\}\]</span></p>
@@ -388,13 +389,72 @@ window.Quarto = {
 <p>The CDF (right plot) shows the probability of a game having at most one goal scored. Notice how in the CDF, the height of the line is the summation of the individual probabilities illustrated in the left plot. This can be seen as the probability of zero goals being scored is about 0.23. The probability of one goal being scored is about 0.35. The probability of at most one goal being scored (one goal or zero goals) is equal to 0.58 which is a summation of the first two numbers. The mathematical equation can be seen below: <span class="math display">\[F_X(1) = P(X \leq 1) = \sum_{i \in S, i \leq x} f_X(i)\]</span></p>
 </section>
 <section id="the-continuous-distribution" class="level1" data-number="4">
-
+<h1 data-number="4"><span class="header-section-number">4</span> The Continuous Distribution</h1>
+<p>Now let’s switch our focus to the continuous distribution (when the variable can take on an infinite number of values in a given range). Similar to the discrete model, continuous models also use three different tools to illustrate how the data looks.</p>
+<p>Before we look at any of the tools, there is a caveat with the continuous distribution. If I asked “What is the probability that a goal is scored at exactly 45 minutes and zero seconds,” the mathematical answer would be zero. This is because time (or any other variable along a continuum) is infinitely divisible. What this essentially means is that the probability of getting a single, infinitely thin point, is non-existent.</p>
+<p>So why do we care? This idea has a large impact on the first continuous tool known as the <strong>Probability Densitiy Function (PDF)</strong>. Unlike the PMF, where the height of the line is the probability, the height of a PDF (<span class="math inline">\(f_X(x)\)</span>) is just density. The mathematical definition for the PDF is a little bit different. To actually calculate the probability of an event happening, we evaluate the area under the curve: <span class="math display">\[P(a \leq X \leq b) = \int_{a}^{b} f_X(x) dx\]</span> With the PDF, notice that if you are evaluating the probability of an event taking place at the exact 45th minute, a and be would both equal 45. With that the integral would be evaluating a period from 45 minutes to 45 minutes which in reality equals a “single, infinitely thin point” which has a probability of zero</p>
+<p>The second tool, similar to the discrete distribution is called the <strong>Cumulative Density Function (CDF)</strong>. The CDF (<span class="math inline">\(F_X(x)\)</span>) is a smoother version of the staircase plot seen in the soccer goal counts. This is because it again is a sum of all of the infintecimally small probabilities before rather than just looking at the sums of whole numbers which lead to the jagged, stairlike CDF in the discrete case. It represents the total accumulated area from the start of the match up to time <span class="math inline">\(x\)</span>. The mathematical definition for the continuous CDF is: <span class="math display">\[F_X(x) = \int_{-\infty}^{x} f_X(t) dt\]</span></p>
+<p>Similarly to the discrete case, the final tool is called the <strong>Inverse CDF</strong>. While the CDF tells us the probability of an event happening by a certain time, the Inverse CDF (<span class="math inline">\(F_X^{-1}(p)\)</span>) does the opposite. The inverse CDF tells us exactly when an event will happen for a given probability. In our example relating to soccer matches and timing, an analyst might ask: “by what minute have 75% of all goals typically been scored?” To answer this, we look for the 75th percentile, similar to how we did in the discrete case. The mathematical definiton for it would be: <span class="math display">\[x = F_X^{-1}(p)\]</span></p>
+<p>To illustrate the continuous distribution and it’s tools, I simulated data to show the probability of scoring at different times throughout the game as opposed to just simply the number of goals shown in the discrete case. Typically, the timing of goals is modeled on a uniform distribution (the same probability of scoring a goal at every interval of time throughout the game). This distribution would be simply a flat horizontal line in the PDF and upward slanting straight line in the CDF. This however is ultimately a pretty boring, uninsightful plot, so I decided to investigate a scenario where more goals are scored toward the end of halves due to player fatigue and tactical changes. This yields a normal (or guassian) type of continuous distribution which allows for a much more digestible plot.</p>
+<p></p>
+<div class="cell" data-layout-align="center" data-scale="80%">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>mu    <span class="ot">&lt;-</span> <span class="dv">55</span>  <span class="co"># Aribratily picked peak scoring time</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>sigma <span class="ot">&lt;-</span> <span class="dv">15</span>  <span class="co"># Aribitrarily picked sd of timing</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co"># created theoretical density </span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>ggdat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">90</span>, <span class="at">length.out =</span> <span class="dv">1000</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="fu">mutate</span>(<span class="at">PDF =</span> <span class="fu">dnorm</span>(x, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma),</span>
+<span id="cb3-8"><a href="#cb3-8"></a>         <span class="at">CDF =</span> <span class="fu">pnorm</span>(x, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma))</span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co"># created PDF plot</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>PDF.plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(ggdat) <span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> PDF)) <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>  <span class="co"># highlighted goals scored after 75 minutes</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> ggdat <span class="sc">|&gt;</span> <span class="fu">filter</span>(x <span class="sc">&gt;</span> <span class="dv">75</span>),</span>
+<span id="cb3-15"><a href="#cb3-15"></a>              <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> PDF),</span>
+<span id="cb3-16"><a href="#cb3-16"></a>              <span class="at">fill =</span> <span class="st">"darkorchid2"</span>, <span class="at">alpha =</span> <span class="fl">0.50</span>) <span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a>  <span class="fu">xlab</span>(<span class="st">"Minute of Match"</span>) <span class="sc">+</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a>  <span class="fu">ylab</span>(<span class="st">"Density"</span>) <span class="sc">+</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb3-21"><a href="#cb3-21"></a></span>
+<span id="cb3-22"><a href="#cb3-22"></a><span class="co"># created CDF plot</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a>CDF.plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(ggdat) <span class="sc">+</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> CDF)) <span class="sc">+</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a>  <span class="co"># Highlight the probability of a goal by the 75th minute</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">75</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">CDF =</span> <span class="fu">pnorm</span>(x, mu, sigma)),</span>
+<span id="cb3-27"><a href="#cb3-27"></a>             <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> CDF), <span class="at">color =</span> <span class="st">"darkorchid2"</span>, <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a>  <span class="fu">xlab</span>(<span class="st">"Minute of Match"</span>) <span class="sc">+</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a>  <span class="fu">ylab</span>(<span class="st">"Cumulative Probability"</span>) <span class="sc">+</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb3-32"><a href="#cb3-32"></a></span>
+<span id="cb3-33"><a href="#cb3-33"></a>PDF.plot <span class="sc">|</span> CDF.plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Gaussian Model of Goal Timing</figcaption>
+<p><img src="ProbabilityReview_files/figure-html/continuous-goal-timing-1.png" class="img-fluid figure-img" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p>
+<p>The left plot shows the PDF which illustrates the probability of scoring a goal after the 75th minute in purple. The area of that shaded region is the probability of scoring beyond the 75th minute. The right plot is the CDF. Notice how it is no longer shaped like a staircase like the discrete case. The dot at the 75th minute mark in the CDF shows the cumulative probability of scoring before the 75th minute (about a 0.90 probability). What this means is that the difference from that dot to the top of the plot (which is about 0.1) is the remaining probability of scoring in the last 15 minutes which is also the aforementioned shaded region in the PDF plot.</p>
+</section>
+<section id="conclusion" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Conclusion</h1>
+<p>In this review, we explained what a random variable and support were and ho they tied in to what proability actually was. By applying different discrete tools to the 2024 English Premier League season, we saw how different discrete tools were able to summarize and illustrate probabilities of goals. We then moed to the Continuous distribution and usied a Gaussian model to show probabilities related to goal timing. This allowed us to show This allowed us to show how different discrete tools are able to summarize and illustrate probabilities as well as explaining the idea that the probability of a specific point in the continuous case is equal to zero.</p>
 
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">4 The Continuous Distribution</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-EPL2024" class="csl-entry" role="listitem">
 English Premier League. 2024. <em>Match Results Season 2024/25</em>. <a href="https://www.football-data.co.uk/">https://www.football-data.co.uk/</a>.
 </div>
