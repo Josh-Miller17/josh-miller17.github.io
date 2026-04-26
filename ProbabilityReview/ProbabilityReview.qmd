@@ -1,5 +1,5 @@
 ---
-title: Unit 3 - Everything You Need to Know About Probability Distributions # Title of the document
+title: Unit 3 - Everything You Need to Know About General Probability Distributions # Title of the document
 
 # Bibliography Details
 bibliography: ProbabilityReview.bib  # Name of bib file in the same folder 
@@ -171,3 +171,66 @@ The CDF (right plot) shows the probability of a game having at most one goal sco
 
 # The Continuous Distribution
 
+Now let's switch our focus to the continuous distribution (when the variable can take on an infinite number of values in a given range). Similar to the discrete model, continuous models also use three different tools to illustrate how the data looks.
+
+Before we look at any of the tools, there is a caveat with the continuous distribution. If I asked "What is the probability that a goal is scored at exactly 45 minutes and zero seconds," the mathematical answer would be zero. This is because time (or any other variable along a continuum) is infinitely divisible. What this essentially means is that the probability of getting a single, infinitely thin point, is non-existent. 
+
+So why do we care? This idea has a large impact on the first continuous tool known as the **Probability Densitiy Function (PDF)**. Unlike the PMF, where the height of the line is the probability, the height of a PDF ($f_X(x)$) is just density. The mathematical definition for the PDF is a little bit different. To actually calculate the probability of an event happening, we evaluate the area under the curve: $$P(a \leq X \leq b) = \int_{a}^{b} f_X(x) dx$$ 
+With the PDF, notice that if you are evaluating the probability of an event taking place at the exact 45th minute, a and be would both equal 45. With that the integral would be evaluating a period from 45 minutes to 45 minutes which in reality equals a "single, infinitely thin point" which has a probability of zero
+
+The second tool, similar to the discrete distribution is called the **Cumulative Density Function (CDF)**. The CDF ($F_X(x)$) is a smoother version of the staircase plot seen in the soccer goal counts. This is because it again is a sum of all of the infintecimally small probabilities before rather than just looking at the sums of whole numbers which lead to the jagged, stairlike CDF in the discrete case. It represents the total accumulated area from the start of the match up to time $x$. The mathematical definition for the continuous CDF is: $$F_X(x) = \int_{-\infty}^{x} f_X(t) dt$$
+
+Similarly to the discrete case, the final tool is called the **Inverse CDF**. While the CDF tells us the probability of an event happening by a certain time, the Inverse CDF ($F_X^{-1}(p)$) does the opposite. The inverse CDF tells us exactly when an event will happen for a given probability. In our example relating to soccer matches and timing, an analyst might ask: "by what minute have 75% of all goals typically been scored?" To answer this, we look for the 75th percentile, similar to how we did in the discrete case. The mathematical definiton for it would be: $$x = F_X^{-1}(p)$$
+
+
+To illustrate the continuous distribution and it's tools, I simulated data to show the probability of scoring at different times throughout the game as opposed to just simply the number of goals shown in the discrete case. Typically, the timing of goals is modeled on a uniform distribution (the same probability of scoring a goal at every interval of time throughout the game). This distribution would be simply a flat horizontal line in the PDF and upward slanting straight line in the CDF. This however is ultimately a pretty boring, uninsightful plot, so I decided to investigate a scenario where more goals are scored toward the end of halves due to player fatigue and tactical changes. This yields a normal (or guassian) type of continuous distribution which allows for a much more digestible plot.
+
+```{r}
+#| label: continuous-goal-timing
+#| fig-cap: "Gaussian Model of Goal Timing"
+#| fig-width: 5
+#| fig-height: 3
+#| scale: "80%"
+#| fig-align: "center"
+#| size: scriptsize
+
+mu    <- 55  # Aribratily picked peak scoring time
+sigma <- 15  # Aribitrarily picked sd of timing
+
+
+# created theoretical density 
+ggdat <- tibble(x = seq(0, 90, length.out = 1000)) |> 
+  mutate(PDF = dnorm(x, mean = mu, sd = sigma),
+         CDF = pnorm(x, mean = mu, sd = sigma))
+
+# created PDF plot
+PDF.plot <- ggplot(ggdat) +
+  geom_line(aes(x = x, y = PDF)) +
+  # highlighted goals scored after 75 minutes
+  geom_ribbon(data = ggdat |> filter(x > 75),
+              aes(x = x, ymin = 0, ymax = PDF),
+              fill = "darkorchid2", alpha = 0.50) +
+  geom_hline(yintercept = 0) +
+  xlab("Minute of Match") +
+  ylab("Density") +
+  theme_bw()
+
+# created CDF plot
+CDF.plot <- ggplot(ggdat) +
+  geom_line(aes(x = x, y = CDF)) +
+  # Highlight the probability of a goal by the 75th minute
+  geom_point(data = tibble(x = 75) |> mutate(CDF = pnorm(x, mu, sigma)),
+             aes(x = x, y = CDF), color = "darkorchid2", size = 2.5) +
+  geom_hline(yintercept = 0) +
+  xlab("Minute of Match") +
+  ylab("Cumulative Probability") +
+  theme_bw()
+
+PDF.plot | CDF.plot
+```
+
+The left plot shows the PDF which illustrates the probability of scoring a goal after the 75th minute in purple. The area of that shaded region is the probability of scoring beyond the 75th minute. The right plot is the CDF. Notice how it is no longer shaped like a staircase like the discrete case. The dot at the 75th minute mark in the CDF shows the cumulative probability of scoring before the 75th minute (about a 0.90 probability). What this means is that the difference from that dot to the top of the plot (which is about 0.1) is the remaining probability of scoring in the last 15 minutes which is also the aforementioned shaded region in the PDF plot.
+
+# Conclusion
+
+In this review, we explained what a random variable and support were and ho they tied in to what proability actually was. By applying different discrete tools to the 2024 English Premier League season, we saw how different discrete tools were able to summarize and illustrate probabilities of goals. We then moed to the Continuous distribution and usied a Gaussian model to show probabilities related to goal timing. This allowed us to show  This allowed us to show how different discrete tools are able to summarize and illustrate probabilities as well as explaining the idea that the probability of a specific point in the continuous case is equal to zero. 
