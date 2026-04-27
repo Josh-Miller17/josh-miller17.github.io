@@ -100,7 +100,7 @@ The second tool is called the **Cumulative Density Function (CDF)**. A lot of ti
 
 $$F_X(x) = P(X \leq x) = \sum_{i \in S, i \leq x} f_X(i)$$
 
-The final tool for the discrete distribution is the **Inverse CDF**. In the soccer example, the CDF tells you: "What is the probability of scoring 2 or fewer goals?" The Inverse CDF flips the script and shows: "How many goals do I need to score to be in the top 10% of teams?" The mathematical definition is:
+The final tool for the discrete distribution is the **Inverse CDF**. In the soccer example, the CDF tells you: "What is the probability of scoring 2 or fewer goals?" The Inverse CDF flips the CDF and shows: "How many goals do I need to score to be in the top 10% of teams?" The mathematical definition is:
 
 $$F_X^{-1}(p) = \inf \{x \in \mathbb{R} : F_X(x) \geq p\}$$
 
@@ -233,4 +233,4 @@ The left plot shows the PDF which illustrates the probability of scoring a goal 
 
 # Conclusion
 
-In this review, we explained what a random variable and support were and ho they tied in to what proability actually was. By applying different discrete tools to the 2024 English Premier League season, we saw how different discrete tools were able to summarize and illustrate probabilities of goals. We then moed to the Continuous distribution and usied a Gaussian model to show probabilities related to goal timing. This allowed us to show  This allowed us to show how different discrete tools are able to summarize and illustrate probabilities as well as explaining the idea that the probability of a specific point in the continuous case is equal to zero. 
+In this review, I explained what a random variable and support were and how they tied in to what proability actually was. By applying different discrete tools to the 2024 English Premier League season, I saw how different discrete tools were able to summarize and illustrate probabilities of goals. I then moed to the Continuous distribution and usied a Gaussian model to show probabilities related to goal timing. This allowed us to show  This allowed us to show how different discrete tools are able to summarize and illustrate probabilities as well as explaining the idea that the probability of a specific point in the continuous case is equal to zero. 
