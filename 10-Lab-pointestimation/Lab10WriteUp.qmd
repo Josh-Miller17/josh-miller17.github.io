@@ -138,6 +138,12 @@ Suppose a player has a 50\% chance of winning a specific leg, that is let $p=0.5
 
 solution:
 ```{r}
+#| label: fig-AlthamsBinom
+#| fig-cap: "The probability of winning exactly 6 legs in a best-of-eleven match"
+#| fig-width: 5
+#| fig-height: 3
+#| scale: "80%"
+#| fig-align: "center"
 #| size: scriptsize
 library(tidyverse) 
 
@@ -208,7 +214,7 @@ A game where a 6-0 blowout is most likely is when the theta is equal to 0.5 as t
 Altham's Multiplicative Binomial Distribution does not typically simplify to the clean $E(X)=np$ seen in the Binomial distribution, unless $\theta = 1$. Write out the expression that would need to be solved to find $E(X^k)$, and then write a function that computes it given the proposed parameter values $p$ (`prob`) and $\theta$ (`theta`).
 
 Solution: 
-E(X^k) = sum from 0 to infinity of x^k * fx(x)
+$$E(X^k) = \sum_{x \in S} x^k f_X(x)$$
 ```{r}
 #| size: scriptsize
 # created function for observations portion
@@ -216,9 +222,7 @@ E_altbinom_k <- function(k, size, prob, theta){
   x_values <- 0:size
 
 # created function for proportion of obs = x portion
-  probabilities <- sapply(x_values, function(x){
-    daltbinom(x = x, size = 11, prob = 0.50, theta = theta)
-  })
+  probabilities <- daltbinom(x = x_values, size = size, prob = prob, theta = theta)
 
 # combined the two portions to get my E(x^k)
   sum((x_values^k) * probabilitiess)
@@ -255,7 +259,7 @@ loglikelihood_altbinom <- function(parameters, x, n){
 Describe how you can use your answer to part c to find Maximum Likelihood estimates for the parameters $p$ and $\theta$ for Altham's Multiplicative Binomial Distribution based on data.
 
 Solution:
-To find the maximum likelihood estimates I would take data and plug it into my function to multiply the probabilities of each observation together ("and" probability). If many probabiltiies between 0 and 1 are getting multiplied together, the resulting probability will be smaller so we take the log likelihood because it is easier to see the results. The goal is to find the parameters that make the observed data most probable so we optimize/maximize to find parameters that yield the highest combined probability of all of the observations. 
+To find the maximum likelihood estimates I would take data and plug it into my function to multiply the probabilities of each observation together ("and" probability). If many probabiltiies between 0 and 1 are getting multiplied together, the resulting probability will be smaller so we take the log likelihood because it is easier to see the results. The goal is to find the parameters that make the observed data most probable so we optimize to find parameters that yield the highest combined probability of all of the observations. 
 
 # Lab 10
 Peter "Snakebite" Wright is a two-time Professional Darts Corporation World Champion (2020, 2022) and a former World No. 1. He is one of the sport's most decorated players, winning nearly 50 PDC titles including the World Matchplay, UK Open, and multiple European Championships. 
@@ -303,6 +307,34 @@ pdc_cleaned <- pdc_data |>
 pdc_cleaned |>
   count(WinnerLegs, LoserLegs) |>
   mutate(propotion = n / sum(n))
+```
+
+```{r}
+#| label: fig-2024-Darts-Summary
+#| fig-cap: "Distribution of match scorelines in the 2024 Premier League Darts season"
+#| fig-width: 5
+#| fig-height: 3
+#| scale: "80%"
+#| fig-align: "center"
+#| size: scriptsize
+
+# created x-axis labels
+plot_data <- pdc_cleaned |>
+  count(WinnerLegs, LoserLegs) |>
+  mutate(proportion = n / sum(n),
+         ScoreLabel = paste(WinnerLegs, "-", LoserLegs, sep = ""))
+
+# created order of x-axis score labels
+label_order <- c("6-5", "6-4", "6-3", "6-2", "6-1", "6-0")
+plot_data <- plot_data |>
+  mutate(ScoreLabel = factor(ScoreLabel, levels = label_order))
+
+# created the plot
+ggplot(plot_data, aes(x = ScoreLabel, y = proportion)) +
+  geom_col(fill = "darkorchid2", alpha = 0.8) +
+  labs(x = "Match Score (Winner-Loser)",
+       y = "Proportion of Matches") +
+  theme_bw()
 ```
 
 The most common score was 6-5 with about 28% of games ending with that score followed closely by 6-4 and 6-3, meaning most games were competetive. Blowouts where pretty infrequent, at least in comparison to close games. 
@@ -473,6 +505,12 @@ results
 ```
 
 ```{r}
+#| label: fig-dart_beta-distributions
+#| fig-cap: "Beta distributions for Dart players based on 2024 MLEs"
+#| fig-width: 5
+#| fig-height: 8
+#| scale: "80%"
+#| fig-align: "center"
 #| size: scriptsize
 library(tidyverse)
 
